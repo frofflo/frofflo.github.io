@@ -2,6 +2,8 @@
   <a href="/">Hem</a>
   <a href="/cookieclicker">Cookieclicker</a>
   <a href="/telltale">Telltale</a>
+  <a href="/todo">TodoApp</a>
+
   <a
     target="_blank"
     href="https://github.com/frofflo/frofflo.github.io"
