@@ -115,16 +115,20 @@
   .choicetab{
     display: flex;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.1);
     width: 100%;
-    height: 200px;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 10px;
   }
   .settingstab{
     display: flex;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.1);
     width: 100%;
-    height: 200px;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 10px;
   }
   .button{
     width: 400px;
@@ -183,7 +187,7 @@
   .settingspic{
     display: flex;
     justify-content: center;
-    height: 30%;
+    height: 59px; 
     margin-top: 22.5px;
   }
   .settingspic:active{
@@ -196,8 +200,8 @@
   .arrowpic{
     display: flex;
     justify-content: center;
-    height: 30%;
-    margin-top: 22px;
+    height: 59px;
+    margin-top: 22.5px;
   }
   .arrowpic:active{
     background-color: rgba(0, 0, 0, 0.3);
