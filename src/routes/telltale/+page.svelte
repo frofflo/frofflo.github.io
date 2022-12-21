@@ -2,10 +2,8 @@
   import { story_id_store } from "$lib/stores";
   import { stories } from "$lib/stories";
 
-  /* https://svelte.dev/tutorial/in-and-out */
   import { fly } from "svelte/transition";
 
-  /* https://svelte.dev/tutorial/reactive-statements */
   $: story_id = $story_id_store;
   $: story = stories.find((story) => story.id == story_id);
 
@@ -17,33 +15,27 @@
 
 <main>
   <div class="grid">
-    <!-- https://svelte.dev/tutorial/key-blocks -->
     {#key story_id}
-      <!-- https://svelte.dev/tutorial/in-and-out -->
       <div
         class="container"
         in:fly|local={{ x: 800, duration: 750 }}
         out:fly|local={{ x: -800, duration: 750 }}
       >
         <div class="center">
-          <!-- https://svelte.dev/tutorial/if-blocks -->
           {#if story}
             {#if story.img}
               <img src={story.img} alt={story.message} />
             {/if}
             {#if story.html}
-              <!-- https://svelte.dev/tutorial/html-tags -->
               {@html story.html}
             {/if}
             <article>
               <span>{story.message}</span>
             </article>
             {#if story.question}
-              <!-- https://svelte.dev/tutorial/html-tags -->
               <p>{story.question}</p>
             {/if}
             <div class="row">
-              <!-- https://svelte.dev/tutorial/each-blocks -->
               {#each story.choices as choice}
                 <button
                   on:click={() => {
@@ -52,7 +44,6 @@
                 >
               {/each}
             </div>
-            <!-- https://svelte.dev/tutorial/else-blocks -->
           {:else}
             <p>STORY FOR ID {story_id} MISSING</p>
           {/if}
@@ -74,15 +65,8 @@
     align-items: center;
     place-items: center;
     justify-content: center;
-    /* overflow: hidden; */
   }
 
-  /* force the container to stay in the same position of the grid */
-  /* we need this to ensure that the container div does not move weirdly
-     when two divs coexist which they do while the out and in transition
-     is playing simultaneously. Try removing the grid-column placement stuff
-     and you might notice some weird behaviour.
-  */
   .container {
     grid-column-start: 1;
     grid-column-end: 2;

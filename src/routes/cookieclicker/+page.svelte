@@ -1,196 +1,213 @@
 <script>
   import { tick } from "svelte";
 
-  let goofys=0;
-  let rotateVar=0;
-  let yuumis=0;
+  let cookies=0;
   let dmg=1;
-  let damageScale=0;
-  let yuumiCost=100;
-  let minions=0;
-  let minionCost=200;
   let autoClicks=0;
-  let minionCostScale=0;
+  let activeTab="choicetab";
+  let activeStoreTab="UpgradesTab";
 
-  
   /**
      * @type {HTMLImageElement}
      */
   let picture;
 
   function add(){
-      rotateVar+=90
-      goofys+=dmg
-      
-      
-      picture.style.transform = 'rotate(' + rotateVar + 'deg)';
+    cookies+=dmg
   } 
-
-  function moreYuumis(){
-      if(goofys >= yuumiCost){
-          goofys -= yuumiCost
-          yuumiCost *= 2
-          damageScale++
-          dmg += damageScale
-          yuumis++
-      }
+  function Upgrades(){
+    activeStoreTab="UpgradesTab"
+  }
+  function UpgradeEnhancer(){
+    activeStoreTab="Upgrade-EnhancerTab"
+  }
+  function Powerups(){
+    activeStoreTab="PowerupsTab"
+  }
+  function Settings(){
+    activeTab="settingstab";
+  }
+  function Save(){
+    localStorage.setItem('cookies',cookies);
+  }
+  function Load(){
+    cookies = parseFloat(localStorage.getItem('cookies'));
+  }
+  function Back(){
+    activeTab="choicetab"
   }
   
-  function moreMinions(){
-      if(goofys >= minionCost){
-          goofys -= minionCost
-          minions++
-          if (minionCost < 2000){
-              minionCostScale += 50
-              minionCost += minionCostScale
-          }
-          else{
-              minionCostScale += 50
-              minionCost += minionCostScale
-              minionCost *= 2.3
-          }
-          if (autoClicks != 0){
-              autoClicks *= 2
-          }
-          else{
-              autoClicks++
-          }
-
-      }
-
-  }
   setInterval(function(){
-      goofys += autoClicks
-      if(autoClicks != 0){
-          rotateVar+= 90
-          picture.style.transform = 'rotate(' + rotateVar + 'deg)';
-      }
+    cookies += autoClicks
   }, 1000);
-  
 </script>
 
 <div class="background">
-  <center>
-  <h1>Goofy Clicker</h1>
-  <h2>Goofys = {Math.ceil(goofys)}</h2>
-  </center>
-  
-  <center>
-  <figure>
-      <button class = "cookieclass" type="click" on:click={()=>add()} value = cookieclass>
-          <img bind:this={picture} class = "pictureclass" src="https://cdn-ssl.s7.disneystore.com/is/image/DisneyShopping/1234107182995?fmt=jpeg&qlt=90&wid=1215&hei=1215" alt="Fawking Goofy">
-  </figure>
-  <h2>Yuumis = {yuumis}</h2>
-  <p>Yuumi Cost = {yuumiCost} goofys</p>
-  <p>Gain bonus click multiplier</p>
-  <figure>
-      <button class = "yuumiclass" type="click" on:click={()=>moreYuumis()} value = yuumiclass>
-          <img class = "yuumipictureclass" src="https://notagamer.net/wp-content/uploads/2020/01/Untitled-1-9.jpg" alt="Die Yuumi">
-  </figure>
-  
-  <h2>Gragas = {minions}</h2>
-  <p>Gragas Cost = {Math.ceil(minionCost)} goofys</p>
-  <p>Gain 2x Autoclicks/s</p>
-  <figure>
-      <button class = "minionclass" type="click" on:click={()=>moreMinions()} value = minionclass>
-          <img class = "minionpictureclass" src="https://live.staticflickr.com/4054/4294029007_b7495ca5e9_c.jpg" alt="Gragas">
-  </figure>
-  </center>
+
+    <div class="cookiebackground">
+      <h1>Cookie Clicker</h1>
+      <h2>Cookies = {Math.ceil(cookies)}</h2>
+      <div class="cookieWrap">
+          <img type="cookie" on:click={()=>add()} on:keypress={()=>add()} bind:this={picture} class = "cookiepictureclass" src="Cookieimg.png" alt="Cookie">
+      </div>
+    </div>
+
+    <div class="Upgradepanel" class:hidden={activeStoreTab!="UpgradesTab"}>
+      <h1>Upgrades</h1>
+    </div>
+    <div class="Upgrade-Enhancerpanel" class:hidden={activeStoreTab!="Upgrade-EnhancerTab"}>
+      <h1>Upgrade-Enhancer</h1>
+    </div>
+    <div class="PowerupsPanel" class:hidden={activeStoreTab!="PowerupsTab"}>
+      <h1>Powerups</h1>
+    </div>
+
+</div>
+
+<div class="choicetab" class:hidden={activeTab!="choicetab"}>
+  <button class="button" on:click={()=>Upgrades()}>Upgrades</button>
+  <button class="button" on:click={()=>UpgradeEnhancer()}>Upgrade-Enhancer</button>
+  <button class="button" on:click={()=>Powerups()}>Powerups</button>
+  <img type="settings" on:click={Settings} on:keypress={Settings} bind:this={picture} class = "settingspic" src="Settings.png" alt="settings">
+</div>
+
+<div class="settingstab" class:hidden={activeTab!="settingstab"}>
+  <button class="button" on:click={()=>Save()}>Save</button>
+  <button class="button" on:click={()=>Load()}>Load</button>
+  <img type="backarrow" on:click={()=>Back()} on:keypress={()=>Back()} bind:this={picture} class = "arrowpic" src="Arrow.png" alt="back">
 </div>
 
 
 
 <style>
-
+  :global(body){
+    overflow: hidden;
+  }
   .background{
-      width: 50%;
-      background-color: rgba(69, 81, 92, 0.8);
-      margin-left: auto;
-      margin-right: auto;
-      padding-top: 20px;
-      padding-bottom: 20px;
-      transform: translate(0,-10px);
+    display: flex;
+    flex-shrink: 1;
+  }
+  .cookiebackground{
+    text-align: center;
+    border: 12px solid rgba(0,0,0,0.4);
+  }
+  .Upgradepanel{
+    position: relative;
+    text-align: center;
+    background-color: rgba(0,0,0,0.5);
+    height: 600px;
+    width: 100%;
+  }
+  .Upgrade-Enhancerpanel{
+    position: relative;
+    text-align: center;
+    background-color: rgba(0,0,0,0.5);
+    height: 600px;
+    width: 100%;
+  }
+  .PowerupsPanel{
+    position: relative;
+    text-align: center;
+    background-color: rgba(0,0,0,0.5);
+    height: 600px;
+    width: 100%;
+  }
+  .choicetab{
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 200px;
+  }
+  .settingstab{
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 200px;
+  }
+  .button{
+    width: 400px;
+    height: 70px;
+    margin:17px 30px 0px 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgba(255, 153, 76, 0.7);
+    font-size: 2em;
+    font-family: Courier new;
+    font-weight: bold;
+  }
+  .button:hover{
+    background-color: rgb(255, 144, 59);
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+  .button:active{
+    transform: translateY(-5px);
+    background-color: rgb(255, 111, 0);
+  }
+  .button:focus{
+    outline: none;
+    border: none;
   }
   h1{
-      color:gray;
-      background-color: white;
-      background-position: center;
-      width: fit-content;
-      padding-left: 20px;
-      padding-right: 20px;
-      border-radius: 20px;
-      font-family:Comic sans-serif;
-      font-size: 5em;
-      outline-style: solid;
-      outline-width: 5px;
-      outline-color: rgb(59, 59, 59);
+      text-align: center;
+      background-color: rgba(0,0,0,0.2);
+      color:rgb(251, 251, 251);
+      width: 100%;
+      font-family:Courier New;
+      font-size: 2em;
   }
   h2{
-      color: gray;
-      background-color: white;
-      background-position: center;
-      width: fit-content;
-      padding-left: 20px;
-      padding-right: 20px;
-      font-family: Comic sans-serif;
-      font-size: 2em;
-      outline-style: outset;
-      outline-width: 5px;
-      outline-color: gray;
-      padding-bottom: 2px;
+    text-align: center;
+    background-color: rgba(0,0,0,0.2);
+    color:rgb(251, 251, 251);
+    width: 100%;
+    font-family:Courier New;
+    font-size: 1.5em;
+  }
+  .cookieWrap{
+    height: 00px;
+    width: 1000px;
+  }
 
+  .cookiepictureclass{
+    margin-top: 15px;
+    width: 400px;
+    height: 400px; 
+    border-radius: 100%;
+    transition: 100ms;
   }
-  p{
-      color: white;
-      
+  .cookiepictureclass:active{
+    transform: scale(0.95);
   }
-  .cookieclass{
-      background: white;
-      width: 200px;
-      height: 200px;
-      border-radius: 50px;
-      border: none;
-      outline-style: solid;
-      outline-width: 5px;
-      outline-color: rgb(59, 59, 59);
+  .settingspic{
+    display: flex;
+    justify-content: center;
+    height: 30%;
+    margin-top: 22.5px;
   }
-  .yuumiclass{
-      background: transparent;
-      width: 200px;
-      height: 200px;
-      border-radius: 10px;
-      border: none;
+  .settingspic:active{
+    background-color: rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
   }
-  .yuumiclass:focus{
-      outline: none;
+  .settingspic:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
   }
-  .minionclass{
-      background: transparent;
-      width: 400px;
-      height: 250;
-      border-radius: 10px;
-      border: none;
+  .arrowpic{
+    display: flex;
+    justify-content: center;
+    height: 30%;
+    margin-top: 22px;
   }
-  .minionclass:focus{
-      outline: none;
+  .arrowpic:active{
+    background-color: rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
   }
-  .pictureclass{
-      width: 100%;
-      height: 100%;
-      border-radius: 50px;
+  .arrowpic:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
   }
-  .yuumipictureclass{
-      width: 100%;
-      height: 100%;
-      outline-style: outset;
-      outline-width: 10px;
-      outline-color: white;
+  .hidden{
+    display: none;
   }
-  .minionpictureclass{
-      width: 100%;
-      height: 100%;
-      outline-style: outset;
-      outline-width: 10px;
-      outline-color: white;
-  }
+
 </style>
