@@ -95,22 +95,22 @@
     position: relative;
     text-align: center;
     background-color: rgba(0,0,0,0.5);
-    height: 600px;
-    width: 100%;
+    height: 80vh;
+    width: 70vh;
   }
   .Upgrade-Enhancerpanel{
     position: relative;
     text-align: center;
     background-color: rgba(0,0,0,0.5);
-    height: 600px;
-    width: 100%;
+    height: 80vh;
+    width: 70vh;
   }
   .PowerupsPanel{
     position: relative;
     text-align: center;
     background-color: rgba(0,0,0,0.5);
-    height: 600px;
-    width: 100%;
+    height: 80vh;
+    width: 70vh;
   }
   .choicetab{
     display: flex;
@@ -170,14 +170,14 @@
     font-size: 1.5em;
   }
   .cookieWrap{
-    height: 00px;
+    height: 400px;
     width: 1000px;
   }
 
   .cookiepictureclass{
     margin-top: 15px;
-    width: 400px;
-    height: 400px; 
+    width: 55vh;
+    height: 55vh; 
     border-radius: 100%;
     transition: 100ms;
   }
