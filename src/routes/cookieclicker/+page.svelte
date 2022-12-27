@@ -54,12 +54,28 @@
 
     <div class="Upgradepanel" class:hidden={activeStoreTab!="UpgradesTab"}>
       <h1>Upgrades</h1>
+      <div class="Upgradefolder">
+        <img class="Upgradeicon" src="Cookieimg.png" alt="Upgrade" bind:this={picture}>
+        <img class="Upgradeicon" src="Cookieimg.png" alt="Upgrade" bind:this={picture}>
+        <img class="Upgradeicon" src="Cookieimg.png" alt="Upgrade" bind:this={picture}>
+        <img class="Upgradeicon" src="Cookieimg.png" alt="Upgrade" bind:this={picture}>
+        <img class="Upgradeicon" src="Cookieimg.png" alt="Upgrade" bind:this={picture}>
+        <img class="Upgradeicon" src="Cookieimg.png" alt="Upgrade" bind:this={picture}>
+        <img class="Upgradeicon" src="Cookieimg.png" alt="Upgrade" bind:this={picture}>
+
+      </div>
     </div>
     <div class="Upgrade-Enhancerpanel" class:hidden={activeStoreTab!="Upgrade-EnhancerTab"}>
       <h1>Upgrade-Enhancer</h1>
+      <div class="Upgradefolder">
+
+      </div>
     </div>
     <div class="PowerupsPanel" class:hidden={activeStoreTab!="PowerupsTab"}>
       <h1>Powerups</h1>
+      <div class="Upgradefolder">
+
+      </div>
     </div>
 
 </div>
@@ -96,21 +112,34 @@
     text-align: center;
     background-color: rgba(0,0,0,0.5);
     height: 80vh;
-    width: 70vh;
+    width: 35vw;
   }
   .Upgrade-Enhancerpanel{
     position: relative;
     text-align: center;
     background-color: rgba(0,0,0,0.5);
     height: 80vh;
-    width: 70vh;
+    width: 35vw;
   }
   .PowerupsPanel{
     position: relative;
     text-align: center;
     background-color: rgba(0,0,0,0.5);
     height: 80vh;
-    width: 70vh;
+    width: 35vw;
+  }
+  .Upgradefolder{
+    display: grid;
+    grid-template-columns: 98px 98px 98px 98px 98px;
+    grid-template-rows: 98px 98px 98px 98px 98px;
+    width: 95%;
+    height: 95%;
+    margin: auto;
+  }
+  .Upgradeicon{
+    width: 80%;
+    height: 80%;
+    background-color: gold;
   }
   .choicetab{
     display: flex;
@@ -171,13 +200,13 @@
   }
   .cookieWrap{
     height: 400px;
-    width: 1000px;
+    width: 65vw;
   }
 
   .cookiepictureclass{
-    margin-top: 15px;
-    width: 55vh;
-    height: 55vh; 
+    margin-top: 10px;
+    height: 400px; 
+    width: 400px;
     border-radius: 100%;
     transition: 100ms;
   }
