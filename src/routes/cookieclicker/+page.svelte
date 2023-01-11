@@ -5,7 +5,7 @@
   let dmg=1;
   let autoClicks=0;
   let activeTab="choicetab";
-  let activeStoreTab="UpgradesTab";
+  let activeStoreTab="PowerupsTab";
 
   /**
      * @type {HTMLImageElement}
@@ -14,6 +14,12 @@
 
   function add(){
     cookies+=dmg
+    upgradeList.forEach((upgrade)=>{
+      if (cookies*2 >= upgrade.cost){
+        upgrade.isActive = true;
+        upgradeList = upgradeList;
+      }
+    })
   } 
   function Upgrades(){
     activeStoreTab="UpgradesTab"
@@ -36,6 +42,26 @@
   function Back(){
     activeTab="choicetab"
   }
+  class UpgradeIcon{
+    constructor(isActive, cost, name, description){
+      this.isActive=isActive
+      this.cost=cost
+      this.name=name
+      this.description=description
+    }
+  }
+  let upgrade1 = new UpgradeIcon(false, 100, "Click Boost", "Give You A 2x Click Multiplier")
+  let upgrade2 = new UpgradeIcon(false, 200, "1", "1")
+  let upgrade3 = new UpgradeIcon(false, 10, "1", "1")
+  let upgrade4 = new UpgradeIcon(false, 10, "1", "1")
+  let upgrade5 = new UpgradeIcon(false, 10, "1", "1")
+  let upgrade6 = new UpgradeIcon(false, 100, "1", "1")
+  let upgrade7 = new UpgradeIcon(false, 1000, "1", "1")
+
+  let upgradeList = [
+    upgrade1,upgrade2,upgrade3,upgrade4,upgrade5,upgrade6,upgrade7
+  ]
+
   
   setInterval(function(){
     cookies += autoClicks
@@ -55,13 +81,6 @@
     <div class="Upgradepanel" class:hidden={activeStoreTab!="UpgradesTab"}>
       <h1>Upgrades</h1>
       <div class="Upgradefolder">
-        <img class="Upgradeicon" src="Cookieimg.png" alt="Upgrade" bind:this={picture}>
-        <img class="Upgradeicon" src="Cookieimg.png" alt="Upgrade" bind:this={picture}>
-        <img class="Upgradeicon" src="Cookieimg.png" alt="Upgrade" bind:this={picture}>
-        <img class="Upgradeicon" src="Cookieimg.png" alt="Upgrade" bind:this={picture}>
-        <img class="Upgradeicon" src="Cookieimg.png" alt="Upgrade" bind:this={picture}>
-        <img class="Upgradeicon" src="Cookieimg.png" alt="Upgrade" bind:this={picture}>
-        <img class="Upgradeicon" src="Cookieimg.png" alt="Upgrade" bind:this={picture}>
 
       </div>
     </div>
@@ -74,7 +93,14 @@
     <div class="PowerupsPanel" class:hidden={activeStoreTab!="PowerupsTab"}>
       <h1>Powerups</h1>
       <div class="Upgradefolder">
-
+        {#each upgradeList as upgrade}
+          <div class:hidden={!upgrade.isActive}>
+            <p>{upgrade.name}</p>
+            <img src="PixelArtHand.png" alt="Upgrade" class="Upgradeicon">
+            <p>{upgrade.cost}</p>
+            <p class="showOnHover">{upgrade.description}</p>
+          </div>
+        {/each}
       </div>
     </div>
 
@@ -130,8 +156,8 @@
   }
   .Upgradefolder{
     display: grid;
-    grid-template-columns: 98px 98px 98px 98px 98px;
-    grid-template-rows: 98px 98px 98px 98px 98px;
+    grid-template-columns: 6.2vw 6.2vw 6.2vw 6.2vw 6.2vw;
+    grid-template-rows: 12.4vh 12.4vh 12.4vh 12.4vh 12.4vh;
     width: 95%;
     height: 95%;
     margin: auto;
@@ -139,7 +165,13 @@
   .Upgradeicon{
     width: 80%;
     height: 80%;
-    background-color: gold;
+    background-color: black;
+    outline: 5px;
+    outline-style: ridge;
+    outline-color: purple;
+  }
+  .Upgradeicon:hover{
+    background-color: rgba(0, 0, 0, 0.5);
   }
   .choicetab{
     display: flex;
@@ -238,6 +270,12 @@
   }
   .arrowpic:hover{
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+  .showOnHover{
+    opacity: 0;
+  }
+  img:hover ~ .showOnHover{
+    opacity: 1;
   }
   .hidden{
     display: none;
