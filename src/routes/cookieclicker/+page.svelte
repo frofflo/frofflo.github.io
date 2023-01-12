@@ -1,5 +1,5 @@
 <script>
-  import { tick } from "svelte";
+  import { onMount, tick } from "svelte";
 
   let cookies=0;
   let dmg=1;
@@ -36,6 +36,10 @@
   function Save(){
     localStorage.setItem('cookies',cookies);
   }
+  window.onbeforeunload = function (){
+    localStorage.setItem('cookies',cookies);
+  }
+  onMount();cookies = parseFloat(localStorage.getItem('cookies'));
   function Load(){
     cookies = parseFloat(localStorage.getItem('cookies'));
   }
@@ -50,7 +54,7 @@
       this.description=description
     }
   }
-  let upgrade1 = new UpgradeIcon(false, 100, "Click Boost", "Give You A 2x Click Multiplier")
+  let upgrade1 = new UpgradeIcon(false, 100, "Click Boost", "Gives You A 2x Click Multiplier")
   let upgrade2 = new UpgradeIcon(false, 200, "1", "1")
   let upgrade3 = new UpgradeIcon(false, 10, "1", "1")
   let upgrade4 = new UpgradeIcon(false, 10, "1", "1")
@@ -86,19 +90,19 @@
     </div>
     <div class="Upgrade-Enhancerpanel" class:hidden={activeStoreTab!="Upgrade-EnhancerTab"}>
       <h1>Upgrade-Enhancer</h1>
-      <div class="Upgradefolder">
+      <div class="Upgrade-Enhancerfolder">
 
       </div>
     </div>
     <div class="PowerupsPanel" class:hidden={activeStoreTab!="PowerupsTab"}>
       <h1>Powerups</h1>
-      <div class="Upgradefolder">
+      <div class="Powerupsfolder">
         {#each upgradeList as upgrade}
           <div class:hidden={!upgrade.isActive}>
             <p>{upgrade.name}</p>
             <img src="PixelArtHand.png" alt="Upgrade" class="Upgradeicon">
             <p>{upgrade.cost}</p>
-            <p class="showOnHover">{upgrade.description}</p>
+            <h3 class="showOnHover">{upgrade.description}</h3>
           </div>
         {/each}
       </div>
@@ -154,24 +158,49 @@
     height: 80vh;
     width: 35vw;
   }
-  .Upgradefolder{
+  .Powerupsfolder{
     display: grid;
     grid-template-columns: 6.2vw 6.2vw 6.2vw 6.2vw 6.2vw;
-    grid-template-rows: 12.4vh 12.4vh 12.4vh 12.4vh 12.4vh;
+    grid-template-rows: 18.6vh 18.6vh 18.6vh 18.6vh;
     width: 95%;
     height: 95%;
     margin: auto;
   }
   .Upgradeicon{
+    display: flex;
     width: 80%;
-    height: 80%;
+    height: 54%;
     background-color: black;
-    outline: 5px;
-    outline-style: ridge;
-    outline-color: purple;
+    outline: 6px;
+    outline-offset: -1px;
+    outline-style: solid;
+    outline-color: rgba(33,46,53,255);
+    margin-left: 5px;
+    border-radius: 2px;
+    justify-content: center;
+    z-index: -1;
   }
   .Upgradeicon:hover{
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(33,46,53,255);
+  }
+  p{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    width: 80%;
+    padding: 1px 5px 1px 5px;
+    z-index: -1;
+  }
+  h3{
+    position: relative;
+    margin-top: -30px;
+    width: 80%;
+    background-color: rgba(0, 0, 0, 1);
+    color: rgba(255, 255, 255, 0.8);
+    z-index: 10;
+    border-radius: 5px;
+    padding: 1px 5px 1px 5px;
   }
   .choicetab{
     display: flex;
@@ -272,10 +301,10 @@
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
   }
   .showOnHover{
-    opacity: 0;
+    visibility: hidden;
   }
   img:hover ~ .showOnHover{
-    opacity: 1;
+    visibility: visible;
   }
   .hidden{
     display: none;
