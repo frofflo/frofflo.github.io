@@ -46,7 +46,7 @@
   window.onbeforeunload = function (){
     localStorage.setItem('cookies',cookies);
   }
-  // onMount();cookies = parseFloat(localStorage.getItem('cookies')); 
+  onMount();cookies = parseFloat(localStorage.getItem('cookies')); 
     
   function Load(){
     cookies = parseFloat(localStorage.getItem('cookies'));
