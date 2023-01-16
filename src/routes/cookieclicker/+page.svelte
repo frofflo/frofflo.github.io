@@ -2,33 +2,40 @@
   import { onMount, tick } from "svelte";
 
   let cookies=0;
-  let dmg=1;
+  let dmg=100;
   let autoClicks=0;
   let activeTab="choicetab";
-  let activeStoreTab="PowerupsTab";
+  let activeStoreTab="upgradesTab";
+  let activeAlert=0;
 
   /**
      * @type {HTMLImageElement}
-     */
+  */
   let picture;
 
   function add(){
     cookies+=dmg
-    upgradeList.forEach((upgrade)=>{
-      if (cookies*2 >= upgrade.cost){
-        upgrade.isActive = true;
-        upgradeList = upgradeList;
+    powerupList.forEach((powerup)=>{
+      if (cookies*2 >= powerup.cost){
+        powerup.isActive = true;
+        powerupList = powerupList;
       }
     })
-  } 
-  function Upgrades(){
-    activeStoreTab="UpgradesTab"
   }
-  function UpgradeEnhancer(){
-    activeStoreTab="Upgrade-EnhancerTab"
+  function upgrades(){
+    activeStoreTab="upgradesTab"
+  }
+  function upgradeEnhancer(){
+    activeStoreTab="upgrade-EnhancerTab"
   }
   function Powerups(){
     activeStoreTab="PowerupsTab"
+    powerupList.forEach((powerup)=>{
+      if (cookies*2 >= powerup.cost){
+        powerup.isActive = true;
+        powerupList = powerupList;
+      }
+    })
   }
   function Settings(){
     activeTab="settingstab";
@@ -39,31 +46,46 @@
   window.onbeforeunload = function (){
     localStorage.setItem('cookies',cookies);
   }
-  onMount();cookies = parseFloat(localStorage.getItem('cookies'));
+  onMount();cookies = parseFloat(localStorage.getItem('cookies')); 
+    
   function Load(){
     cookies = parseFloat(localStorage.getItem('cookies'));
   }
   function Back(){
     activeTab="choicetab"
   }
-  class UpgradeIcon{
-    constructor(isActive, cost, name, description){
+  class powerupIcon{
+    constructor(isActive, cost, name, description, value){
       this.isActive=isActive
       this.cost=cost
       this.name=name
       this.description=description
+      this.value=value
+      console.log(this);
     }
-  }
-  let upgrade1 = new UpgradeIcon(false, 100, "Click Boost", "Gives You A 2x Click Multiplier")
-  let upgrade2 = new UpgradeIcon(false, 200, "1", "1")
-  let upgrade3 = new UpgradeIcon(false, 10, "1", "1")
-  let upgrade4 = new UpgradeIcon(false, 10, "1", "1")
-  let upgrade5 = new UpgradeIcon(false, 10, "1", "1")
-  let upgrade6 = new UpgradeIcon(false, 100, "1", "1")
-  let upgrade7 = new UpgradeIcon(false, 1000, "1", "1")
 
-  let upgradeList = [
-    upgrade1,upgrade2,upgrade3,upgrade4,upgrade5,upgrade6,upgrade7
+    buy(){
+      if (cookies >= this.cost){
+        this.isActive = false;
+        cookies -= this.cost;
+        powerupList = powerupList;
+        if (this.value == "2" || this.value == "1.5"){
+          dmg *= this.value
+        }
+      }
+    }
+    
+  }
+  let powerup1 = new powerupIcon(false, 100, "Click Boost", "Gives You A 2x Click Multiplier", "2")
+  let powerup2 = new powerupIcon(false, 500, "Click Boost", "Gives You A 1.5x Click Multiplier", "1.5")
+  let powerup3 = new powerupIcon(false, 5000, "Click Boost", "Gives You A 1.5x Click Multiplier", "1.5")
+  let powerup4 = new powerupIcon(false, 50000, "Click Boost", "Gives You A 1.5x Click Multiplier", "1.5")
+  let powerup5 = new powerupIcon(false, 100000, "Click Boost", "Gives You A 2x Click Multiplier", "2")
+  let powerup6 = new powerupIcon(false, 350000, "Click Boost", "Gives You A 1.5x Click Multiplier", "1.5")
+  let powerup7 = new powerupIcon(false, 1000000, "Click Boost", "Gives You A 2x Click Multiplier", "2")
+
+  let powerupList = [
+    powerup1,powerup2,powerup3,powerup4,powerup5,powerup6,powerup7
   ]
 
   
@@ -82,27 +104,30 @@
       </div>
     </div>
 
-    <div class="Upgradepanel" class:hidden={activeStoreTab!="UpgradesTab"}>
+    <div class="upgradePanel" class:hidden={activeStoreTab!="upgradesTab"}>
       <h1>Upgrades</h1>
-      <div class="Upgradefolder">
+      <div class="upgradesfolder">
 
       </div>
     </div>
-    <div class="Upgrade-Enhancerpanel" class:hidden={activeStoreTab!="Upgrade-EnhancerTab"}>
+    <div class="upgrade-Enhancerpanel" class:hidden={activeStoreTab!="upgrade-EnhancerTab"}>
       <h1>Upgrade-Enhancer</h1>
-      <div class="Upgrade-Enhancerfolder">
+      <div class="upgrade-Enhancerfolder">
 
       </div>
+    </div>
+    <div class="Can't Afford" class:hidden={activeAlert!="cantAfford"}>
+      <h2>Can't Afford</h2>
     </div>
     <div class="PowerupsPanel" class:hidden={activeStoreTab!="PowerupsTab"}>
       <h1>Powerups</h1>
       <div class="Powerupsfolder">
-        {#each upgradeList as upgrade}
-          <div class:hidden={!upgrade.isActive}>
-            <p>{upgrade.name}</p>
-            <img src="PixelArtHand.png" alt="Upgrade" class="Upgradeicon">
-            <p>{upgrade.cost}</p>
-            <h3 class="showOnHover">{upgrade.description}</h3>
+        {#each powerupList as powerup}
+          <div class:hidden={!powerup.isActive}>
+            <p>{powerup.name}</p>
+            <img src="PixelArtHand.png" alt="powerup" class="powerupicon" on:click={()=>{powerup.buy()}} on:keypress={()=>{powerup.buy()}}>
+            <p>{powerup.cost}</p>
+            <h3 class="showOnHover">{powerup.description}</h3>
           </div>
         {/each}
       </div>
@@ -111,8 +136,8 @@
 </div>
 
 <div class="choicetab" class:hidden={activeTab!="choicetab"}>
-  <button class="button" on:click={()=>Upgrades()}>Upgrades</button>
-  <button class="button" on:click={()=>UpgradeEnhancer()}>Upgrade-Enhancer</button>
+  <button class="button" on:click={()=>upgrades()}>Upgrades</button>
+  <button class="button" on:click={()=>upgradeEnhancer()}>Upgrade-Enhancer</button>
   <button class="button" on:click={()=>Powerups()}>Powerups</button>
   <img type="settings" on:click={Settings} on:keypress={Settings} bind:this={picture} class = "settingspic" src="Settings.png" alt="settings">
 </div>
@@ -137,14 +162,14 @@
     text-align: center;
     border: 12px solid rgba(0,0,0,0.4);
   }
-  .Upgradepanel{
+  .upgradePanel{
     position: relative;
     text-align: center;
     background-color: rgba(0,0,0,0.5);
     height: 80vh;
     width: 35vw;
   }
-  .Upgrade-Enhancerpanel{
+  .upgrade-Enhancerpanel{
     position: relative;
     text-align: center;
     background-color: rgba(0,0,0,0.5);
@@ -166,7 +191,7 @@
     height: 95%;
     margin: auto;
   }
-  .Upgradeicon{
+  .powerupicon{
     display: flex;
     width: 80%;
     height: 54%;
@@ -180,8 +205,11 @@
     justify-content: center;
     z-index: -1;
   }
-  .Upgradeicon:hover{
+  .powerupicon:hover{
     background-color: rgba(33,46,53,255);
+  }
+  .powerupicon:active{
+    transform: translateY(-5px);
   }
   p{
     margin-top: 8px;
