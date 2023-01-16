@@ -1,4 +1,5 @@
 <script>
+    import { json } from "@sveltejs/kit";
   import { onMount, tick } from "svelte";
 
   let cookies=0;
@@ -7,6 +8,7 @@
   let activeTab="choicetab";
   let activeStoreTab="upgradesTab";
   let activeAlert=0;
+  let isBoughtList = [];
 
   /**
      * @type {HTMLImageElement}
@@ -14,13 +16,21 @@
   let picture;
 
   function add(){
+
     cookies+=dmg
+
     powerupList.forEach((powerup)=>{
       if (cookies*2 >= powerup.cost && ! powerup.isBought){
         powerup.isActive = true;
         powerupList = powerupList;
       }
     })
+
+    powerupList.forEach(upgrade => {
+        if(isBoughtList.includes(upgrade.cost)){
+          upgrade.isActive = false;
+        }
+      })
   }
   function upgrades(){
     activeStoreTab="upgradesTab"
@@ -36,20 +46,35 @@
         powerupList = powerupList;
       }
     })
+    isBoughtList = JSON.parse(localStorage.getItem('isBought') != null ? localStorage.getItem('isBought') : "" )
+
+    powerupList.forEach(upgrade => {
+        if(isBoughtList.includes(upgrade.cost)){
+          upgrade.isActive = false;
+        }
+      })
   }
   function Settings(){
     activeTab="settingstab";
   }
   function Save(){
     localStorage.setItem('cookies',cookies);
+    localStorage.setItem('dmg', dmg);
   }
   window.onbeforeunload = function (){
     localStorage.setItem('cookies',cookies);
+    localStorage.setItem('dmg', dmg);
   }
+  
   onMount();cookies = parseFloat(localStorage.getItem('cookies')); 
-    
+  if (cookies == null){
+    cookies = 0;
+  }
+  onMount();dmg = parseFloat(localStorage.getItem('dmg'));
+
   function Load(){
     cookies = parseFloat(localStorage.getItem('cookies'));
+    dmg = parseFloat(localStorage.getItem('dmg'));
   }
   function Back(){
     activeTab="choicetab"
@@ -69,26 +94,29 @@
       if (cookies >= this.cost){
         this.isActive = false;
         this.isBought = true;
+        isBoughtList.push(this.cost);
+        localStorage.setItem('isBought', JSON.stringify(isBoughtList)); 
+        isBoughtList=isBoughtList;
         cookies -= this.cost;
         powerupList = powerupList;
-        if (this.value == "2" || this.value == "1.5"){
-          dmg *= this.value
-        }
+        dmg *= this.value
       }
     }
     
   }
   let powerup1 = new powerupIcon(false, 100, "Click Boost", "Gives You A 2x Click Multiplier", "2", false)
   let powerup2 = new powerupIcon(false, 500, "Click Boost", "Gives You A 1.5x Click Multiplier", "1.5", false)
-  let powerup3 = new powerupIcon(false, 5000, "Click Boost", "Gives You A 1.5x Click Multiplier", "1.5", false)
-  let powerup4 = new powerupIcon(false, 50000, "Click Boost", "Gives You A 1.5x Click Multiplier", "1.5", false)
-  let powerup5 = new powerupIcon(false, 100000, "Click Boost", "Gives You A 2x Click Multiplier", "2", false)
-  let powerup6 = new powerupIcon(false, 350000, "Click Boost", "Gives You A 1.5x Click Multiplier", "1.5", false)
-  let powerup7 = new powerupIcon(false, 1000000, "Click Boost", "Gives You A 2x Click Multiplier", "2", false)
+  let powerup3 = new powerupIcon(false, 2500, "Click Boost", "Gives You A 2x Click Multiplier", "2", false)
+  let powerup4 = new powerupIcon(false, 5000, "Click Boost", "Gives You A 1.5x Click Multiplier", "1.5", false)
+  let powerup5 = new powerupIcon(false, 50000, "Click Boost", "Gives You A 1.5x Click Multiplier", "1.5", false)
+  let powerup6 = new powerupIcon(false, 100000, "Click Boost", "Gives You A 2x Click Multiplier", "2", false)
+  let powerup7 = new powerupIcon(false, 350000, "Click Boost", "Gives You A 1.5x Click Multiplier", "1.5", false)
+  let powerup8 = new powerupIcon(false, 1000000, "Click Boost", "Gives You A 2x Click Multiplier", "2", false)
 
   let powerupList = [
     powerup1,powerup2,powerup3,powerup4,powerup5,powerup6,powerup7
   ]
+
 
   
   setInterval(function(){
