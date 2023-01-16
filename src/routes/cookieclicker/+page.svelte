@@ -2,7 +2,7 @@
   import { onMount, tick } from "svelte";
 
   let cookies=0;
-  let dmg=100;
+  let dmg=1;
   let autoClicks=0;
   let activeTab="choicetab";
   let activeStoreTab="upgradesTab";
@@ -16,7 +16,7 @@
   function add(){
     cookies+=dmg
     powerupList.forEach((powerup)=>{
-      if (cookies*2 >= powerup.cost){
+      if (cookies*2 >= powerup.cost && ! powerup.isBought){
         powerup.isActive = true;
         powerupList = powerupList;
       }
@@ -31,7 +31,7 @@
   function Powerups(){
     activeStoreTab="PowerupsTab"
     powerupList.forEach((powerup)=>{
-      if (cookies*2 >= powerup.cost){
+      if (cookies*2 >= powerup.cost && ! powerup.isBought){
         powerup.isActive = true;
         powerupList = powerupList;
       }
@@ -46,7 +46,7 @@
   window.onbeforeunload = function (){
     localStorage.setItem('cookies',cookies);
   }
-  onMount();cookies = parseFloat(localStorage.getItem('cookies')); 
+  // onMount();cookies = parseFloat(localStorage.getItem('cookies')); 
     
   function Load(){
     cookies = parseFloat(localStorage.getItem('cookies'));
@@ -55,18 +55,20 @@
     activeTab="choicetab"
   }
   class powerupIcon{
-    constructor(isActive, cost, name, description, value){
+    constructor(isActive, cost, name, description, value, isBought){
       this.isActive=isActive
       this.cost=cost
       this.name=name
       this.description=description
       this.value=value
+      this.isBought=isBought
       console.log(this);
     }
 
     buy(){
       if (cookies >= this.cost){
         this.isActive = false;
+        this.isBought = true;
         cookies -= this.cost;
         powerupList = powerupList;
         if (this.value == "2" || this.value == "1.5"){
@@ -76,13 +78,13 @@
     }
     
   }
-  let powerup1 = new powerupIcon(false, 100, "Click Boost", "Gives You A 2x Click Multiplier", "2")
-  let powerup2 = new powerupIcon(false, 500, "Click Boost", "Gives You A 1.5x Click Multiplier", "1.5")
-  let powerup3 = new powerupIcon(false, 5000, "Click Boost", "Gives You A 1.5x Click Multiplier", "1.5")
-  let powerup4 = new powerupIcon(false, 50000, "Click Boost", "Gives You A 1.5x Click Multiplier", "1.5")
-  let powerup5 = new powerupIcon(false, 100000, "Click Boost", "Gives You A 2x Click Multiplier", "2")
-  let powerup6 = new powerupIcon(false, 350000, "Click Boost", "Gives You A 1.5x Click Multiplier", "1.5")
-  let powerup7 = new powerupIcon(false, 1000000, "Click Boost", "Gives You A 2x Click Multiplier", "2")
+  let powerup1 = new powerupIcon(false, 100, "Click Boost", "Gives You A 2x Click Multiplier", "2", false)
+  let powerup2 = new powerupIcon(false, 500, "Click Boost", "Gives You A 1.5x Click Multiplier", "1.5", false)
+  let powerup3 = new powerupIcon(false, 5000, "Click Boost", "Gives You A 1.5x Click Multiplier", "1.5", false)
+  let powerup4 = new powerupIcon(false, 50000, "Click Boost", "Gives You A 1.5x Click Multiplier", "1.5", false)
+  let powerup5 = new powerupIcon(false, 100000, "Click Boost", "Gives You A 2x Click Multiplier", "2", false)
+  let powerup6 = new powerupIcon(false, 350000, "Click Boost", "Gives You A 1.5x Click Multiplier", "1.5", false)
+  let powerup7 = new powerupIcon(false, 1000000, "Click Boost", "Gives You A 2x Click Multiplier", "2", false)
 
   let powerupList = [
     powerup1,powerup2,powerup3,powerup4,powerup5,powerup6,powerup7
