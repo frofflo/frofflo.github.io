@@ -121,29 +121,46 @@
   }
 
   onMount(()=>{
-  cookies = parseFloat(localStorage.getItem('cookies')); 
   if (cookies == null){
     cookies = 0;
   }
-  dmg = parseFloat(localStorage.getItem('dmg'));
+  else{
+    cookies = parseFloat(localStorage.getItem('cookies')); 
+  }
+  
   if (dmg == null){
     dmg = 1;
   }
-  cursors = parseFloat(localStorage.getItem('cursors'));
+  else{
+    dmg = parseFloat(localStorage.getItem('dmg'));
+  }
+
   if (cursors == null){
     cursors = 0;
   }
-  cursorCost = parseFloat(localStorage.getItem('cursorCost'));
+  else{
+    cursors = parseFloat(localStorage.getItem('cursors'));
+  }
+
   if (cursorCost == null){
     cursorCost = 50;
   }
-  autoClicks = parseFloat(localStorage.getItem('autoClicks'))
+  else{
+    cursorCost = parseFloat(localStorage.getItem('cursorCost'));
+  }
+
   if (autoClicks == null){
     autoClicks = 0;
   }
-  cursorMultiplier = parseFloat(localStorage.getItem('cursorMultiplier'));
+  else{
+    autoClicks = parseFloat(localStorage.getItem('autoClicks'));
+  }
+
   if (cursorMultiplier == null){
     cursorMultiplier = 1;
+  }
+  else{
+    cursorMultiplier = parseFloat(localStorage.getItem('cursorMultiplier'));
   }
   });
   
@@ -157,12 +174,47 @@
     localStorage.setItem('cursorMultiplier', cursorMultiplier);
   }
   function Load(){
-    cookies = parseFloat(localStorage.getItem('cookies'));
+    if (cookies == null){
+    cookies = 0;
+  }
+  else{
+    cookies = parseFloat(localStorage.getItem('cookies')); 
+  }
+  
+  if (dmg == null){
+    dmg = 1;
+  }
+  else{
     dmg = parseFloat(localStorage.getItem('dmg'));
+  }
+
+  if (cursors == null){
+    cursors = 0;
+  }
+  else{
     cursors = parseFloat(localStorage.getItem('cursors'));
+  }
+
+  if (cursorCost == null){
+    cursorCost = 50;
+  }
+  else{
     cursorCost = parseFloat(localStorage.getItem('cursorCost'));
+  }
+
+  if (autoClicks == null){
+    autoClicks = 0;
+  }
+  else{
     autoClicks = parseFloat(localStorage.getItem('autoClicks'));
+  }
+
+  if (cursorMultiplier == null){
+    cursorMultiplier = 1;
+  }
+  else{
     cursorMultiplier = parseFloat(localStorage.getItem('cursorMultiplier'));
+  }
   }
 
   function Back(){
