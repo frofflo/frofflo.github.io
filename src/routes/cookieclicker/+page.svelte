@@ -149,16 +149,16 @@
   
   cookies = parseFloat(localStorage.getItem('cookies')??0); 
   
-  dmg = parseFloat(localStorage.getItem('dmg')??0);
+  dmg = parseFloat(localStorage.getItem('dmg')??1);
   
   cursors = parseFloat(localStorage.getItem('cursors')??0);
   
-  cursorCost = parseFloat(localStorage.getItem('cursorCost')??0);
+  cursorCost = parseFloat(localStorage.getItem('cursorCost')??50);
 
   autoClicks = parseFloat(localStorage.getItem('autoClicks')??0);
 
-  cursorMultiplier = parseFloat(localStorage.getItem('cursorMultiplier')??0);
-
+  cursorMultiplier = parseFloat(localStorage.getItem('cursorMultiplier')??1);
+  
   }
 
   function Back(){
