@@ -53,7 +53,7 @@
     }
     .background{
         width: 50%;
-        background-color: grey;
+        background-color: rgba(0, 0, 0, 0.2);
         margin-left: auto;
         margin-right: auto;
         padding: 40px 20px 1000px;
@@ -82,7 +82,7 @@
     button{
         display: block;
         margin: auto;
-        margin-bottom: 15px;
+        margin-bottom: 30px;
     }
 
     .inputClass{
@@ -105,15 +105,16 @@
         border-radius: 5px;
         width: fit-content;
         font-family:Comic sans-serif;
-        font-size: 3em;
-        background-color: white;   
+        font-size: 4em;
+        color: rgba(255, 255, 255, 0.8);
     }
     .hr{
         height: 5px;
-        background-color: rgb(84, 84, 84);
+        background-color: rgba(0, 0, 0, 0.2);
         border: none;
         border-radius: 5px;
-        width: 80%;
+        width: 35%;
+        margin-bottom: 30px;
     }
 
 </style>

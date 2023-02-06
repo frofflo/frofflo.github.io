@@ -3,6 +3,7 @@
   <a href="/cookieclicker">Cookieclicker</a>
   <a href="/telltale">Telltale</a>
   <a href="/todo">TodoApp</a>
+  <a href="/memory">memory</a>
 
   <a
     target="_blank"
