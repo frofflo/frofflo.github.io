@@ -5,11 +5,7 @@
   <a href="/todo">TodoApp</a>
   <a href="/memory">memory</a>
 
-  <a
-    target="_blank"
-    href="https://github.com/frofflo/frofflo.github.io"
-    >GitHub</a
-  >
+  <a target="_blank"  href="https://github.com/frofflo/frofflo.github.io" >GitHub</a>
 </nav>
 
 <hr />
