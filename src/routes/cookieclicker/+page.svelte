@@ -237,6 +237,25 @@
   
   }
 
+  function Reset(){
+    activeTab = "yesOrnoTab"
+  }
+
+  function wipeData(){
+    localStorage.clear()
+
+    cookies = parseFloat(localStorage.getItem('cookies')??0); 
+    dmg = parseFloat(localStorage.getItem('dmg')??1);
+    cursors = parseFloat(localStorage.getItem('cursors')??0);
+    cursorCost = parseFloat(localStorage.getItem('cursorCost')??50);
+    autoClicks = parseFloat(localStorage.getItem('autoClicks')??0);
+    cursorMultiplier = parseFloat(localStorage.getItem('cursorMultiplier')??1);
+
+    activeTab="choicetab"
+    location.reload()
+    
+  }
+
   function Back(){
     activeTab="choicetab"
   }
@@ -319,7 +338,7 @@
     cursorCost = Math.round(cursorCost / 10) * 10
   }, 10);
   setInterval(function(){
-    cookiesPerSecond = autoClicks*100 + cps*cursorMultiplier;
+    cookiesPerSecond = (autoClicks*100) + cps*dmg;
     autoClicks = (0.001*cursors*cursorMultiplier);
     cursorCost = Math.round(cursorCost / 10) * 10
     cookies += autoClicks
@@ -421,7 +440,13 @@
 <div class="settingstab" class:hidden={activeTab!="settingstab"}>
   <button class="button" on:click={()=>Save()}>Save</button>
   <button class="button" on:click={()=>Load()}>Load</button>
+  <button class="button" on:click={()=>Reset()}>Reset</button>
   <img type="backarrow" on:click={()=>Back()} on:keypress={()=>Back()} bind:this={picture} class = "arrowpic" src="Arrow.png" alt="back">
+</div>
+
+<div class="yesOrnoTab" class:hidden={activeTab!="yesOrnoTab"}>
+  <button class="button" on:click={()=>wipeData()}>Yes</button>
+  <button class="button" on:click={()=>Back()}>No</button>
 </div>
 
 
@@ -441,6 +466,7 @@
   .background{
     display: flex;
     flex-shrink: 1;
+    height: 75vh;
   }
   .particle {
     position: absolute;
@@ -449,7 +475,6 @@
     transform: translate(-50%, -50%) rotate(var(--rotation));
     aspect-ratio: 1/1;
     pointer-events: none;
-    background-color: orange;
   }
   .cookiebackground{
     text-align: center;
@@ -461,7 +486,7 @@
     position: relative;
     text-align: center;
     background-color: rgba(0,0,0,0.5);
-    height: 80vh;
+    height: 75vh;
     width: 35vw;
   }
   .upgradesFolder{
@@ -473,13 +498,13 @@
     display: grid;
     grid-template-columns: 20% 13.5% 20% 20%;
     justify-content: center;
+    justify-content: space-evenly;
     width: 30vw;
     height: 12vh;
     background-color: rgb(33,46,53);
     font-size: 2em;
     margin-bottom: 10px;
     border-radius: 5px;
-    gap: 20px;
   }
   .upgradeImageTemplate{
     margin-top: 1vh;
@@ -506,7 +531,7 @@
     max-height: 10vh;
   }
   .upgradeDescription{
-    transform: translate(48%, 30%);
+    transform: translate(5%, 30%);
     width: 10vh;
   }
   .pixelArtHand{
@@ -555,7 +580,7 @@
     position: relative;
     text-align: center;
     background-color: rgba(0,0,0,0.5);
-    height: 80vh;
+    height: 75vh;
     width: 35vw;
   }
   .upgrade-Enhancerfolder{
@@ -572,7 +597,7 @@
     position: relative;
     text-align: center;
     background-color: rgba(0,0,0,0.5);
-    height: 80vh;
+    height: 75vh;
     width: 35vw;
   }
   .Powerupsfolder{
@@ -679,6 +704,15 @@
     bottom: 0;
     margin-bottom: 10px;
   }
+  .yesOrnoTab{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 10px;
+  }
   .button{
     width: 400px;
     height: 70px;
@@ -707,7 +741,7 @@
     width: 65vw;
   }
   .cookiepictureclass{
-    margin-top: 5vh;
+    margin-top: 2.5vh;
     height: 80%; 
     aspect-ratio: 1;
     border-radius: 100%;
