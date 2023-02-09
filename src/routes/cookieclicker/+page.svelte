@@ -347,7 +347,7 @@
 
 <div class="background">
     <div class="cookiebackground">
-      <h1>Cookie Clicker</h1>
+      <h1>C<span class="boobs">🍒</span>kie Clicker</h1>
       <h2>Cookies:{Math.ceil(cookies)}</h2>
       <h6>Cookies/second:{Math.floor(cookiesPerSecond*10)/10}</h6>
       <h6>Clicks/second:{cps}</h6>
@@ -749,6 +749,11 @@
   }
   .cookiepictureclass:active{
     transform: scale(0.95);
+  }
+  .boobs{
+    position: relative;
+    top: -6px;
+    font-size: 1.05em;
   }
   .settingspic{
     display: flex;
