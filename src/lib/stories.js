@@ -10,3 +10,5 @@ export let stories = [
      {id:"9",message: "You decide to run over the child and manage to get away. After 10 years of depression the guilt overcomes you and you decide to end it all",question:"RIP!",choices:[{id:"1",text:"Click to restart"}]},
      {id:"10",message: "You decide to hit the brakes and the police catch you. You get put back into jail for lifetime",img:"Brakes.jpg",question:"RIP!",choices:[{id:"1",text:"Click to restart"}]},
      {id:"11",message: "You decide to run over the elders and shake off the cops. 10 years pass and when you walk alone in an alley a familiar face comes up to you and seeks revenge for his dead grandparents",question:"RIP!",choices:[{id:"1",text:"Click to restart"}]}]
+
+     

@@ -335,6 +335,14 @@
     upgradeEnhancer1, upgradeEnhancer2, upgradeEnhancer3, upgradeEnhancer4, upgradeEnhancer5
   ]
   setInterval(function(){
+    localStorage.setItem('cookies',cookies);
+    localStorage.setItem('dmg', dmg);
+    localStorage.setItem('cursors', cursors);
+    localStorage.setItem('cursorCost', cursorCost);
+    localStorage.setItem('autoClicks', autoClicks);
+    localStorage.setItem('cursorMultiplier', cursorMultiplier);
+  }, 5000);
+  setInterval(function(){
     cursorCost = Math.round(cursorCost / 10) * 10
   }, 10);
   setInterval(function(){

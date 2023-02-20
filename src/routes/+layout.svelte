@@ -4,6 +4,7 @@
   <a class="linkClass" href="/telltale">Telltale</a>
   <a class="linkClass" href="/todo">TodoApp</a>
   <a class="linkClass" href="/memory">Memory</a>
+  <a class="linkClass" href="/elizabot">Elizabot</a>
 
   <a class="linkClass" target="_blank"  href="https://github.com/frofflo/frofflo.github.io" >GitHub</a>
 </nav>
@@ -25,16 +26,18 @@
   }
   
   .navClass{
+    transform: translateY(-10px);
     display: flex;
     flex-direction: row;
     justify-content: center;
     justify-content: space-evenly;
     background-color: rgb(80,101,111);
+    margin-bottom: -10px;
   }
   .linkClass{
     transition: background 0.3s;
     color: white;
-    padding: 10px;
+    padding: 15px;
   }
   .linkClass:hover{
     background-color: rgb(48, 60, 65);
