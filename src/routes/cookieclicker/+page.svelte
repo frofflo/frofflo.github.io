@@ -4,7 +4,7 @@
     import { each } from "svelte/internal";
 
   let cookies=0;
-  let dmg=1;
+  let dmg=10000;
   let autoClicks=0;
   let activeTab="choicetab";
   let activeStoreTab="upgradesTab";
@@ -21,13 +21,13 @@
   let cookiesPerSecond = 0;
   var colors = ['#794e2e', '#ac8a5e', '#ceb288','#bf9d70', '#d5c1a5', '#441f15','#9f7547', '#552b1d'];
   let randVar = 0;
-  let randSize = 0;
 
 
   /**
      * @type {HTMLImageElement}
   */
   let picture;
+  let cookieScale = 1
 
   function lerp(a, b, t){
     return (b - a) * t + a
@@ -44,7 +44,6 @@
   }  
 
   function add(){
-
     cps ++;
     setTimeout(function(){
     cps --;
@@ -312,21 +311,20 @@
     }
   }
 
-  let powerup1 = new powerupIcon(false, 100, "Click Boost", "Gives You A 2x Click Multiplier", "2", false)
-  let powerup2 = new powerupIcon(false, 500, "Click Boost", "Gives You A 1.5x Click Multiplier", "1.5", false)
-  let powerup3 = new powerupIcon(false, 2500, "Click Boost", "Gives You A 2x Click Multiplier", "2", false)
-  let powerup4 = new powerupIcon(false, 5000, "Click Boost", "Gives You A 1.5x Click Multiplier", "1.5", false)
-  let powerup5 = new powerupIcon(false, 50000, "Click Boost", "Gives You A 1.5x Click Multiplier", "1.5", false)
-  let powerup6 = new powerupIcon(false, 100000, "Click Boost", "Gives You A 2x Click Multiplier", "2", false)
-  let powerup7 = new powerupIcon(false, 350000, "Click Boost", "Gives You A 1.5x Click Multiplier", "1.5", false)
-  let powerup8 = new powerupIcon(false, 1000000, "Click Boost", "Gives You A 2x Click Multiplier", "2", false)
+  let powerup1 = new powerupIcon(false, 100, "Click Boost", "Gives You A 2x Click Multiplier", 2, false)
+  let powerup2 = new powerupIcon(false, 500, "Click Boost", "Gives You A 1.5x Click Multiplier", 1.5, false)
+  let powerup3 = new powerupIcon(false, 2500, "Click Boost", "Gives You A 2x Click Multiplier", 2, false)
+  let powerup4 = new powerupIcon(false, 5000, "Click Boost", "Gives You A 1.5x Click Multiplier", 1.5, false)
+  let powerup5 = new powerupIcon(false, 50000, "Click Boost", "Gives You A 1.5x Click Multiplier", 1.5, false)
+  let powerup6 = new powerupIcon(false, 100000, "Click Boost", "Gives You A 2x Click Multiplier", 2, false)
+  let powerup7 = new powerupIcon(false, 350000, "Click Boost", "Gives You A 1.5x Click Multiplier", 1.5, false)
+  let powerup8 = new powerupIcon(false, 1000000, "Click Boost", "Gives You A 2x Click Multiplier", 2, false)
 
-  let upgradeEnhancer1 = new upgradeEnhancerIcon(false, 10, "More Cursors", "Gives You 2x Cursor Profits", "2", false)
-  let upgradeEnhancer2 = new upgradeEnhancerIcon(false, 20, "More Cursors", "Gives You 1.5x Cursor Profits", "1.5", false)
-  let upgradeEnhancer3 = new upgradeEnhancerIcon(false, 50, "More Cursors", "Gives You 2x Cursor Profits", "2", false)
-  let upgradeEnhancer4 = new upgradeEnhancerIcon(false, 100, "More Cursors", "Gives You 1.5x Cursor Profits", "1.5", false)
-  let upgradeEnhancer5 = new upgradeEnhancerIcon(false, 200, "More Cursors", "Gives You 2x Cursor Profits", "2", false)
-
+  let upgradeEnhancer1 = new upgradeEnhancerIcon(false, 10, "More Cursors", "Gives You 2x Cursor Profits", 2, false)
+  let upgradeEnhancer2 = new upgradeEnhancerIcon(false, 20, "More Cursors", "Gives You 1.5x Cursor Profits", 1.5, false)
+  let upgradeEnhancer3 = new upgradeEnhancerIcon(false, 50, "More Cursors", "Gives You 2x Cursor Profits", 2, false)
+  let upgradeEnhancer4 = new upgradeEnhancerIcon(false, 100, "More Cursors", "Gives You 1.5x Cursor Profits", 1.5, false)
+  let upgradeEnhancer5 = new upgradeEnhancerIcon(false, 200, "More Cursors", "Gives You 2x Cursor Profits", 2, false)
 
   let powerupList = [
     powerup1,powerup2,powerup3,powerup4,powerup5,powerup6,powerup7,powerup8
@@ -334,6 +332,7 @@
   let upgradeEnhancerList = [
     upgradeEnhancer1, upgradeEnhancer2, upgradeEnhancer3, upgradeEnhancer4, upgradeEnhancer5
   ]
+  
   setInterval(function(){
     localStorage.setItem('cookies',cookies);
     localStorage.setItem('dmg', dmg);
@@ -343,24 +342,22 @@
     localStorage.setItem('cursorMultiplier', cursorMultiplier);
   }, 5000);
   setInterval(function(){
-    cursorCost = Math.round(cursorCost / 10) * 10
-  }, 10);
-  setInterval(function(){
-    cookiesPerSecond = (autoClicks*100) + cps*dmg;
     autoClicks = (0.001*cursors*cursorMultiplier);
+    cookiesPerSecond = (autoClicks*100);
     cursorCost = Math.round(cursorCost / 10) * 10
-    cookies += autoClicks
+    cookies += autoClicks*0.75
   }, 1);
 </script>
 
 <div class="background">
     <div class="cookiebackground">
       <h1>C<span class="boobs">🍒</span>kie Clicker</h1>
-      <h2>Cookies:{Math.ceil(cookies)}</h2>
+      <h2>Cookies:{Math.floor(cookies)}</h2>
       <h6>Cookies/second:{Math.floor(cookiesPerSecond*10)/10}</h6>
       <h6>Clicks/second:{cps}</h6>
       <div class="cookieWrap">
-          <img type="cookie" on:click={()=>add()} on:keypress={()=>add()} bind:this={picture} class = "cookiepictureclass" src="Cookieimg.png" alt="Cookie">
+        <img class="cookieButtonClass" on:mousedown={()=>{cookieScale = 0.95}} on:mouseup={()=>{cookieScale = 1}} on:click={()=>add()} on:keypress={()=>add()} alt="cookieBtn">
+        <img type="cookie" bind:this={picture} style="transform: scale({cookieScale})" class = "cookiepictureclass" src="Cookieimg.png" alt="Cookie">
       </div>
     </div>
 
@@ -378,11 +375,11 @@
           <div class="upgradeCostClass"><h5>{cursorCost}</h5></div>
           <div class="plusMinus">
             <div class="plusClass">
-              <img on:click={minus(cursors)} on:keypress={minus(cursors)} class="plus" src="MinusSign.png" alt="Minus">
+              <img on:click={minus} on:keypress={minus} class="plus" src="MinusSign.png" alt="Minus">
               <h3 class="showOnHover plusMinusDescription">Sells 1 Cursor for 50%</h3>
             </div>
             <div class="plusClass">
-              <img on:click={plus(cursors)} on:keypress={plus(cursors)} class="plus" src="PlusSign.png" alt="Plus">
+              <img on:click={plus} on:keypress={plus} class="plus" src="PlusSign.png" alt="Plus">
               <h3 class="showOnHover plusMinusDescription">Purchase 1 cursor for {cursorCost} cookies</h3>
             </div>
           </div>
@@ -595,7 +592,7 @@
     display: grid;
     grid-template-columns: 6.2vw 6.2vw 6.2vw 6.2vw 6.2vw;
     grid-template-rows: 18.6vh 18.6vh 18.6vh 18.6vh;
-    width: 95%;
+    width: 97.5%;
     height: 95%;
     margin: auto;
   }
@@ -612,7 +609,7 @@
     display: grid;
     grid-template-columns: 6.2vw 6.2vw 6.2vw 6.2vw 6.2vw;
     grid-template-rows: 18.6vh 18.6vh 18.6vh 18.6vh;
-    width: 95%;
+    width: 97.5%;
     height: 95%;
     margin: auto;
   }
@@ -755,8 +752,14 @@
     border-radius: 100%;
     transition: 100ms;
   }
-  .cookiepictureclass:active{
-    transform: scale(0.95);
+  .cookieButtonClass{
+    margin-top: 2.5vh;
+    height: 42.5%; 
+    aspect-ratio: 1;
+    border-radius: 100%;
+    opacity: 0;
+    position: absolute;
+    z-index: 10;
   }
   .boobs{
     position: relative;

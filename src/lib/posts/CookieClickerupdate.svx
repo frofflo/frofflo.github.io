@@ -1,0 +1,130 @@
+---
+title: Fixade Constructor till upgrades och bugfixes
+date: "2023-04-05"
+---
+
+Jag har fixat en constructor och lagt till några uppgraderingar samt upgrade enhancers:
+
+```svelte
+
+class multipleUpgrades{
+    constructor(name, upgradeCost, costMultiplier, description, ammount, autoClickAddValue, picURL){
+        this.name=name
+        this.upgradeCost=upgradeCost
+        this.costMultiplier=costMultiplier
+        this.description=description
+        this.ammount=ammount
+        this.autoClickAddValue=autoClickAddValue
+        this.picURL=picURL
+    }
+    plus(){
+      if (cookies >= this.upgradeCost){
+        cookies-=this.upgradeCost
+        this.upgradeCost*=this.costMultiplier
+        this.ammount+=1
+
+        if(this.name=="cursor"){
+          cursors = this.ammount*this.autoClickAddValue
+        }
+        if(this.name=="grandpa"){
+          grandpas = this.ammount*this.autoClickAddValue
+        }
+        if(this.name=="wheatfarm"){
+          wheatfarms = this.ammount*this.autoClickAddValue
+        }
+        if(this.name=="sugarcane -farm"){
+          sugarcanefarms = this.ammount*this.autoClickAddValue
+          console.log(sugarcanefarms)
+          console.log(sugarcanefarmMultiplier)
+        }
+        if(this.name=="factory"){
+          factories = this.ammount*this.autoClickAddValue
+        }
+      }
+      upgradeList = upgradeList;
+    }
+    minus(){
+      if(this.ammount != 0 || this.ammount > 0){
+        this.ammount -= 1;
+        this.upgradeCost /= this.costMultiplier;
+        cookies += this.upgradeCost/2;
+
+        if(this.name=="cursor"){
+          cursors = this.ammount*this.autoClickAddValue
+        }
+        if(this.name=="grandpa"){
+          grandpas = this.ammount*this.autoClickAddValue
+        }
+        if(this.name=="wheatfarm"){
+          wheatfarms = this.ammount*this.autoClickAddValue
+        }
+        if(this.name=="sugarcanefarm"){
+          sugarcanefarms = this.ammount*this.autoClickAddValue
+        }
+        if(this.name=="factory"){
+          factories = this.ammount*this.autoClickAddValue
+        }
+      }
+      upgradeList = upgradeList;
+    }
+  }
+
+  let upgrade1 = new multipleUpgrades("cursor", 50, 1.5, "Buy one Cursor to get 0.1 cookies / second", cursors, 0.1, "PixelArtHand.png")
+  let upgrade2 = new multipleUpgrades("grandpa", 500, 1.1, "Buy one Grandpa to get 1 cookies / second", grandpas, 1, "grandpa.png")
+  let upgrade3 = new multipleUpgrades("wheatfarm", 1500, 1.05, "Buy one Wheatfarm to get 10 cookies / second", wheatfarms, 10, "wheat.png")
+  let upgrade4 = new multipleUpgrades("sugarcane -farm", 10000, 1.075, "Buy one Sugarcane -farm to get 50 cookies / second", sugarcanefarms, 50, "sugarcane.png")
+  let upgrade5 = new multipleUpgrades("factory", 100000, 1.1, "Buy one Factory to get 200 cookies / second", factories, 200, "factory.png")
+
+  let upgradeEnhancer1 = new upgradeEnhancerIcon(false, 200, "Cursors", "Gives You 2x Cursor Profits", 2, false, "PixelArtHand.png")
+  let upgradeEnhancer2 = new upgradeEnhancerIcon(false, 500, "Cursors", "Gives You 1.5x Cursor Profits", 1.5, false, "PixelArtHand.png")
+  let upgradeEnhancer3 = new upgradeEnhancerIcon(false, 5000, "Cursors", "Gives You 2x Cursor Profits", 2, false, "PixelArtHand.png")
+  let upgradeEnhancer4 = new upgradeEnhancerIcon(false, 25000, "Cursors", "Gives You 1.5x Cursor Profits", 1.5, false, "PixelArtHand.png")
+  let upgradeEnhancer5 = new upgradeEnhancerIcon(false, 100000, "Cursors", "Gives You 2x Cursor Profits", 2, false, "PixelArtHand.png")
+  let upgradeEnhancer6 = new upgradeEnhancerIcon(false, 50000, "More Sugar", "Gives You 3x Sugarcane Profits", 3, false, "sugarcane.png")
+  let upgradeEnhancer7 = new upgradeEnhancerIcon(false, 250000, "More Sugar", "Gives You 2x Sugarcane Profits", 2, false, "sugarcane.png")
+  let upgradeEnhancer8 = new upgradeEnhancerIcon(false, 500000, "More Sugar", "Gives You 2x Sugarcane Profits", 2, false, "sugarcane.png")
+  let upgradeEnhancer9 = new upgradeEnhancerIcon(false, 1000000, "Cursors", "Gives You 5x Cursor Profits", 5, false, "PixelArtHand.png")
+  let upgradeEnhancer10 = new upgradeEnhancerIcon(false, 2500000, "More Sugar", "Gives You 5x Sugarcane Profits", 5, false, "sugarcane.png")
+
+  let upgradeList = [
+    upgrade1, upgrade2, upgrade3, upgrade4, upgrade5
+  ]
+
+  let upgradeEnhancerList = [
+    upgradeEnhancer1, upgradeEnhancer2, upgradeEnhancer3, upgradeEnhancer4, upgradeEnhancer5, upgradeEnhancer6, upgradeEnhancer7, upgradeEnhancer8, upgradeEnhancer9, upgradeEnhancer10
+  ]
+
+  localStorage.setItem('upgrades', JSON.stringify(upgradeList))
+
+  upgradeList = JSON.parse(localStorage.getItem('upgrades')??"[]").map((json)=>Object.assign(new multipleUpgrades(), json))
+
+
+```
+
+```svelte
+
+<div class="upgradesFolder">
+        {#each upgradeList as upgrade}
+
+        <div class="upgradeTemplate">
+            <div>
+                <img class="upgradeImageTemplate pixelArtHand" src={upgrade.picURL} alt="pic">
+                <h3 class="showOnHover upgradeDescription">{upgrade.description}</h3>
+            </div>
+            <div class="upgradeImageTemplate"><h4>{upgrade.ammount}</h4></div>
+            <div class="upgradeCostClass"><h5>{Math.ceil(upgrade.upgradeCost)}</h5></div>
+            <div class="plusMinus">
+
+              <img on:click={()=>{upgrade.minus()}} on:keypress={()=>{upgrade.minus()}} class="plus" src="MinusSign.png" alt="Minus">
+              <h3 class="showOnHover minusDescription">Sell 1 {upgrade.name} for 50%</h3>
+
+              <img on:click={()=>{upgrade.plus()}} on:keypress={()=>{upgrade.plus()}} class="plus" src="PlusSign.png" alt="Plus">
+              <h3 class="showOnHover plusDescription">Purchase 1 {upgrade.name} for {Math.ceil(upgrade.upgradeCost)} cookies</h3>
+                
+            </div>
+              
+        </div>
+        {/each}
+      </div>
+
+```

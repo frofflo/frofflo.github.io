@@ -5,6 +5,9 @@
   <a class="linkClass" href="/todo">TodoApp</a>
   <a class="linkClass" href="/memory">Memory</a>
   <a class="linkClass" href="/elizabot">Elizabot</a>
+  <a class="linkClass" href="/search">Search</a>
+  <a class="linkClass" href="/blog">Blog</a>
+
 
   <a class="linkClass" target="_blank"  href="https://github.com/frofflo/frofflo.github.io" >GitHub</a>
 </nav>
@@ -33,17 +36,22 @@
     justify-content: space-evenly;
     background-color: rgb(80,101,111);
     margin-bottom: -10px;
+    margin-top: 17.5px;
+    border-radius: 5px;
   }
   .linkClass{
     transition: background 0.3s;
+    transition: scale 0.1s;
     color: white;
     padding: 15px;
+    border-radius: 5px;
   }
   .linkClass:hover{
     background-color: rgb(48, 60, 65);
   }
   .linkClass:active{
-    transform: translateY(-5px);
+    scale:0.9;
+    transform: translateY(-0.2px);
   }
   a {
     text-decoration: none;

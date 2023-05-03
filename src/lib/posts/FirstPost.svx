@@ -1,0 +1,27 @@
+---
+title: First Post
+date: "2023-03-16"
+---
+
+<script>
+ let a = 0;
+</script>
+
+<h1>{a} Candies</h1>
+
+<button on:click={()=>{a = a + 10}}>CLICK FOR CANDY</button>
+
+<style>
+    button{
+        background-color: rgba(0,0,0,0.2);
+        border-radius:50%;
+        aspect-ratio:1/1;
+        border:none;
+    }
+    button:hover{
+        background-color: rgba(0,0,0,0.4);
+    }
+    button:active{
+        scale:1.1;
+    }
+</style>
