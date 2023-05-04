@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width" />
 		<meta http-equiv="content-security-policy" content="">
 		<link href="./_app/immutable/assets/_layout-c6c3fac1.css" rel="stylesheet">
-		<link href="./_app/immutable/assets/_page-4ab00059.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/_layout-8003c18b.css" rel="stylesheet">
 		<link rel="modulepreload" href="./_app/immutable/start-6fcc5e89.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index-1141e785.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/singletons-6eba404b.js">
@@ -17,7 +17,10 @@
 		<link rel="modulepreload" href="./_app/immutable/components/pages/_layout.svelte-5c549669.js">
 		<link rel="modulepreload" href="./_app/immutable/modules/pages/_layout.js-860f444f.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/_layout-27569177.js">
-		<link rel="modulepreload" href="./_app/immutable/components/pages/telltale/_page.svelte-5941aff2.js">
+		<link rel="modulepreload" href="./_app/immutable/components/pages/blog/_layout.svelte-bf08441a.js">
+		<link rel="modulepreload" href="./_app/immutable/components/pages/blog/_page.svelte-be76d8ff.js">
+		<link rel="modulepreload" href="./_app/immutable/modules/pages/blog/_page.js-2915e215.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_page-66335205.js"><!-- HEAD_svelte-gw0ru3_START --><!-- HEAD_svelte-gw0ru3_END -->
 	</head>
 	<body>
 		<div style="display: contents">
@@ -37,15 +40,20 @@
 
 <hr>
 
-<main class="svelte-g5py0r"><div class="grid svelte-g5py0r"><div class="container svelte-g5py0r"><div class="center svelte-g5py0r"><img src="CarChase.gif" alt="The adventures of Rollin." class="svelte-g5py0r">
-            
-            <article class="svelte-g5py0r"><span>The adventures of Rollin.</span></article>
-            
-            <div class="row svelte-g5py0r"><button class="svelte-g5py0r">Click To Start</button></div></div></div></div>
-</main>
 
 
-		<script type="module" data-sveltekit-hydrate="1yr16f2">
+<main class="container"><h1>Blog</h1>
+
+<ul><li><h2><a href="/blog/CookieClickerupdate">Fixade Constructor till upgrades och bugfixes
+        </a></h2>
+      Published 2023-04-05
+    </li><li><h2><a href="/blog/FirstPost">First Post
+        </a></h2>
+      Published 2023-03-16
+    </li></ul></main>
+
+
+		<script type="module" data-sveltekit-hydrate="1m5qi7j">
 			import { start } from "./_app/immutable/start-6fcc5e89.js";
 
 			start({
@@ -53,17 +61,17 @@
 				hydrate: {
 					status: 200,
 					error: null,
-					node_ids: [0, 14],
+					node_ids: [0, 2, 6],
 					params: {},
-					route: {"id":"/telltale"},
-					data: [null,null],
+					route: {"id":"/blog"},
+					data: [null,null,null],
 					form: null
 				},
 				paths: {"base":"","assets":""},
-				target: document.querySelector('[data-sveltekit-hydrate="1yr16f2"]').parentNode,
+				target: document.querySelector('[data-sveltekit-hydrate="1m5qi7j"]').parentNode,
 				version: "1683205188434"
 			});
 		</script>
-	</div>
+	<script type="application/json" data-sveltekit-fetched data-url="/api/posts">{"status":200,"statusText":"","headers":{},"body":"[{\"meta\":{\"title\":\"Fixade Constructor till upgrades och bugfixes\",\"date\":\"2023-04-05\"},\"path\":\"CookieClickerupdate\"},{\"meta\":{\"title\":\"First Post\",\"date\":\"2023-03-16\"},\"path\":\"FirstPost\"}]"}</script></div>
 	</body>
 </html>

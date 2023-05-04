@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="./favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="content-security-policy" content="">
+		<link href="./_app/immutable/assets/_layout-c6c3fac1.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/_page-d331ee00.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/start-6fcc5e89.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index-1141e785.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons-6eba404b.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index-454e312b.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper-b21cceae.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/control-ba37bfb4.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/parse-c28c2630.js">
+		<link rel="modulepreload" href="./_app/immutable/components/pages/_layout.svelte-5c549669.js">
+		<link rel="modulepreload" href="./_app/immutable/modules/pages/_layout.js-860f444f.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_layout-27569177.js">
+		<link rel="modulepreload" href="./_app/immutable/components/pages/cookieclickerProj/_page.svelte-456269ce.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/elizadata-e7e5fdf8.js">
+	</head>
+	<body>
+		<div style="display: contents">
+
+
+<nav class="navClass svelte-11yo30u"><a class="linkClass svelte-11yo30u" href="/">Hem</a>
+  <a class="linkClass svelte-11yo30u" href="/cookieclicker">Cookieclicker</a>
+  <a class="linkClass svelte-11yo30u" href="/telltale">Telltale</a>
+  <a class="linkClass svelte-11yo30u" href="/todo">TodoApp</a>
+  <a class="linkClass svelte-11yo30u" href="/memory">Memory</a>
+  <a class="linkClass svelte-11yo30u" href="/elizabot">Elizabot</a>
+  <a class="linkClass svelte-11yo30u" href="/search">Search</a>
+  <a class="linkClass svelte-11yo30u" href="/blog">Blog</a>
+
+
+  <a class="linkClass svelte-11yo30u" target="_blank" href="https://github.com/frofflo/frofflo.github.io">GitHub</a></nav>
+
+<hr>
+
+<div class="background svelte-1h6xg3h"><div class="alertTab svelte-1h6xg3h"><h2 class="svelte-1h6xg3h">Hold Up!</h2>
+    <h4 class="svelte-1h6xg3h">You need 0 more cookies</h4></div>
+
+  
+
+  <div class="cookiebackground svelte-1h6xg3h"><h1 class="svelte-1h6xg3h">Cookie Clicker</h1>
+    <div class="cookieDisplayDiv svelte-1h6xg3h"><h2 class="cookieDisplay svelte-1h6xg3h">Cookies:0</h2></div>
+    <h6 class="svelte-1h6xg3h">Cookies/second:0</h6>
+    <h6 class="svelte-1h6xg3h">Clicks/second:0</h6>
+    <div class="cookieWrap svelte-1h6xg3h"><img class="cookieButtonClass svelte-1h6xg3h" alt="cookieBtn">
+      <img type="cookie" style="transform: scale(1)" class="cookiepictureclass svelte-1h6xg3h" src="Cookieimg.png" alt="Cookie"></div></div>
+
+  <div class="upgradePanel svelte-1h6xg3h"><h1 class="svelte-1h6xg3h">Upgrades</h1>
+
+    <div class="upgradesFolder svelte-1h6xg3h"><div class="upgradeTemplate svelte-1h6xg3h"><div><img class="upgradeImageTemplate pixelArtHand svelte-1h6xg3h" src="PixelArtHand.png" alt="pic">
+            <h3 class="showOnHover upgradeDescription svelte-1h6xg3h">Buy one Cursor to get 0.1 cookies / second
+            </h3></div>
+          <div class="upgradeImageTemplate svelte-1h6xg3h"><h4 class="svelte-1h6xg3h">0</h4></div>
+          <div class="upgradeCostClass svelte-1h6xg3h"><h5 class="svelte-1h6xg3h">50</h5></div>
+          <div class="plusMinus svelte-1h6xg3h"><img class="plus svelte-1h6xg3h" src="MinusSign.png" alt="Minus">
+            <h3 class="showOnHover minusDescription svelte-1h6xg3h">Sell 1 cursor for 50%
+            </h3>
+
+            <img class="plus svelte-1h6xg3h" src="PlusSign.png" alt="Plus">
+            <h3 class="showOnHover plusDescription svelte-1h6xg3h">Purchase 1 cursor for 50 cookies
+            </h3></div>
+        </div><div class="upgradeTemplate svelte-1h6xg3h"><div><img class="upgradeImageTemplate pixelArtHand svelte-1h6xg3h" src="grandpa.png" alt="pic">
+            <h3 class="showOnHover upgradeDescription svelte-1h6xg3h">Buy one Grandpa to get 1 cookies / second
+            </h3></div>
+          <div class="upgradeImageTemplate svelte-1h6xg3h"><h4 class="svelte-1h6xg3h">0</h4></div>
+          <div class="upgradeCostClass svelte-1h6xg3h"><h5 class="svelte-1h6xg3h">500</h5></div>
+          <div class="plusMinus svelte-1h6xg3h"><img class="plus svelte-1h6xg3h" src="MinusSign.png" alt="Minus">
+            <h3 class="showOnHover minusDescription svelte-1h6xg3h">Sell 1 grandpa for 50%
+            </h3>
+
+            <img class="plus svelte-1h6xg3h" src="PlusSign.png" alt="Plus">
+            <h3 class="showOnHover plusDescription svelte-1h6xg3h">Purchase 1 grandpa for 500 cookies
+            </h3></div>
+        </div><div class="upgradeTemplate svelte-1h6xg3h"><div><img class="upgradeImageTemplate pixelArtHand svelte-1h6xg3h" src="wheat.png" alt="pic">
+            <h3 class="showOnHover upgradeDescription svelte-1h6xg3h">Buy one Wheatfarm to get 10 cookies / second
+            </h3></div>
+          <div class="upgradeImageTemplate svelte-1h6xg3h"><h4 class="svelte-1h6xg3h">0</h4></div>
+          <div class="upgradeCostClass svelte-1h6xg3h"><h5 class="svelte-1h6xg3h">1.5K</h5></div>
+          <div class="plusMinus svelte-1h6xg3h"><img class="plus svelte-1h6xg3h" src="MinusSign.png" alt="Minus">
+            <h3 class="showOnHover minusDescription svelte-1h6xg3h">Sell 1 wheatfarm for 50%
+            </h3>
+
+            <img class="plus svelte-1h6xg3h" src="PlusSign.png" alt="Plus">
+            <h3 class="showOnHover plusDescription svelte-1h6xg3h">Purchase 1 wheatfarm for 1.5K cookies
+            </h3></div>
+        </div><div class="upgradeTemplate svelte-1h6xg3h"><div><img class="upgradeImageTemplate pixelArtHand svelte-1h6xg3h" src="sugarcane.png" alt="pic">
+            <h3 class="showOnHover upgradeDescription svelte-1h6xg3h">Buy one Sugarcane -farm to get 50 cookies / second
+            </h3></div>
+          <div class="upgradeImageTemplate svelte-1h6xg3h"><h4 class="svelte-1h6xg3h">0</h4></div>
+          <div class="upgradeCostClass svelte-1h6xg3h"><h5 class="svelte-1h6xg3h">10K</h5></div>
+          <div class="plusMinus svelte-1h6xg3h"><img class="plus svelte-1h6xg3h" src="MinusSign.png" alt="Minus">
+            <h3 class="showOnHover minusDescription svelte-1h6xg3h">Sell 1 sugarcane -farm for 50%
+            </h3>
+
+            <img class="plus svelte-1h6xg3h" src="PlusSign.png" alt="Plus">
+            <h3 class="showOnHover plusDescription svelte-1h6xg3h">Purchase 1 sugarcane -farm for 10K cookies
+            </h3></div>
+        </div><div class="upgradeTemplate svelte-1h6xg3h"><div><img class="upgradeImageTemplate pixelArtHand svelte-1h6xg3h" src="cacao.png" alt="pic">
+            <h3 class="showOnHover upgradeDescription svelte-1h6xg3h">Buy one cacaofarm to get 100 cookies / second
+            </h3></div>
+          <div class="upgradeImageTemplate svelte-1h6xg3h"><h4 class="svelte-1h6xg3h">0</h4></div>
+          <div class="upgradeCostClass svelte-1h6xg3h"><h5 class="svelte-1h6xg3h">50K</h5></div>
+          <div class="plusMinus svelte-1h6xg3h"><img class="plus svelte-1h6xg3h" src="MinusSign.png" alt="Minus">
+            <h3 class="showOnHover minusDescription svelte-1h6xg3h">Sell 1 cacaofarm for 50%
+            </h3>
+
+            <img class="plus svelte-1h6xg3h" src="PlusSign.png" alt="Plus">
+            <h3 class="showOnHover plusDescription svelte-1h6xg3h">Purchase 1 cacaofarm for 50K cookies
+            </h3></div>
+        </div><div class="upgradeTemplate svelte-1h6xg3h"><div><img class="upgradeImageTemplate pixelArtHand svelte-1h6xg3h" src="cow.png" alt="pic">
+            <h3 class="showOnHover upgradeDescription svelte-1h6xg3h">Buy one milkyfarm to get 250 cookies / second
+            </h3></div>
+          <div class="upgradeImageTemplate svelte-1h6xg3h"><h4 class="svelte-1h6xg3h">0</h4></div>
+          <div class="upgradeCostClass svelte-1h6xg3h"><h5 class="svelte-1h6xg3h">125K</h5></div>
+          <div class="plusMinus svelte-1h6xg3h"><img class="plus svelte-1h6xg3h" src="MinusSign.png" alt="Minus">
+            <h3 class="showOnHover minusDescription svelte-1h6xg3h">Sell 1 milkyfarm for 50%
+            </h3>
+
+            <img class="plus svelte-1h6xg3h" src="PlusSign.png" alt="Plus">
+            <h3 class="showOnHover plusDescription svelte-1h6xg3h">Purchase 1 milkyfarm for 125K cookies
+            </h3></div>
+        </div><div class="upgradeTemplate svelte-1h6xg3h"><div><img class="upgradeImageTemplate pixelArtHand svelte-1h6xg3h" src="factory.png" alt="pic">
+            <h3 class="showOnHover upgradeDescription svelte-1h6xg3h">Buy one Factory to get 1500 cookies / second
+            </h3></div>
+          <div class="upgradeImageTemplate svelte-1h6xg3h"><h4 class="svelte-1h6xg3h">0</h4></div>
+          <div class="upgradeCostClass svelte-1h6xg3h"><h5 class="svelte-1h6xg3h">1M</h5></div>
+          <div class="plusMinus svelte-1h6xg3h"><img class="plus svelte-1h6xg3h" src="MinusSign.png" alt="Minus">
+            <h3 class="showOnHover minusDescription svelte-1h6xg3h">Sell 1 factory for 50%
+            </h3>
+
+            <img class="plus svelte-1h6xg3h" src="PlusSign.png" alt="Plus">
+            <h3 class="showOnHover plusDescription svelte-1h6xg3h">Purchase 1 factory for 1M cookies
+            </h3></div>
+        </div></div></div>
+  <div class="upgrade-Enhancerpanel svelte-1h6xg3h hidden"><h1 class="svelte-1h6xg3h">Upgrade-Enhancer</h1>
+    <div class="upgrade-Enhancerfolder svelte-1h6xg3h"><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Cursors</p>
+          <img src="PixelArtHand.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">200</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 2x Cursor Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Cursors</p>
+          <img src="PixelArtHand.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">500</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 1.5x Cursor Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Cursors</p>
+          <img src="PixelArtHand.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">4.5K</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 2x Cursor Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Cursors</p>
+          <img src="PixelArtHand.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">25K</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 1.5x Cursor Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Cursors</p>
+          <img src="PixelArtHand.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">100K</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 2x Cursor Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Cursors</p>
+          <img src="PixelArtHand.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">800K</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 5x Cursor Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Grandpas</p>
+          <img src="grandpa.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">2K</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 3x Grandpa Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Grandpas</p>
+          <img src="grandpa.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">5.5K</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 3x Grandpa Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Grandpas</p>
+          <img src="grandpa.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">10K</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 3x Grandpa Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Grandpas</p>
+          <img src="grandpa.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">26K</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 5x Grandpa Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Grandpas</p>
+          <img src="grandpa.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">52K</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 5x Grandpa Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Wheat</p>
+          <img src="wheat.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">5K</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 2.5x Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Wheat</p>
+          <img src="wheat.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">27K</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 2.5x Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Wheat</p>
+          <img src="wheat.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">54K</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 4x Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Wheat</p>
+          <img src="wheat.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">110K</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 4x Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Wheat</p>
+          <img src="wheat.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">200K</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 2.5x Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Sugar</p>
+          <img src="sugarcane.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">50K</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 3x Sugarcane Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Sugar</p>
+          <img src="sugarcane.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">275K</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 2x Sugarcane Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Sugar</p>
+          <img src="sugarcane.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">550K</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 2x Sugarcane Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Sugar</p>
+          <img src="sugarcane.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">2.2M</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 5x Sugarcane Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Cacao</p>
+          <img src="cacao.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">150K</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 4x Cacaofarm Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Cacao</p>
+          <img src="cacao.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">300K</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 4x Cacaofarm Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Cacao</p>
+          <img src="cacao.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">700K</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 3x Cacaofarm Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Cacao</p>
+          <img src="cacao.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">2.5M</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 4x Cacaofarm Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Cacao</p>
+          <img src="cacao.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">5M</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 3x Cacaofarm Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Milk</p>
+          <img src="cow.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">250K</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 3x Milkyfarm Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Milk</p>
+          <img src="cow.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">500K</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 5x Milkyfarm Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Milk</p>
+          <img src="cow.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">1.5M</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 3x Milkyfarm Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Milk</p>
+          <img src="cow.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">2.75M</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 3x Milkyfarm Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Milk</p>
+          <img src="cow.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">5.5M</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 5x Milkyfarm Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Factories</p>
+          <img src="factory.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">2M</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 3x Factory Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Factories</p>
+          <img src="factory.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">10M</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 5x Factory Profits</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Factories</p>
+          <img src="factory.png" alt="upgradeEnhancer" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">25M</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You 10x Factory Profits</h3>
+        </div></div></div>
+  <div class="Can't Afford svelte-1h6xg3h hidden"><h2 class="svelte-1h6xg3h">Can&#39;t Afford</h2></div>
+  <div class="PowerupsPanel svelte-1h6xg3h hidden"><h1 class="svelte-1h6xg3h">Powerups</h1>
+    <div class="Powerupsfolder svelte-1h6xg3h"><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Click Boost</p>
+          <img src="PixelArtHand.png" alt="powerup" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">100</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You A 2x Click Multiplier</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Click Boost</p>
+          <img src="PixelArtHand.png" alt="powerup" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">500</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You A 1.5x Click Multiplier</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Click Boost</p>
+          <img src="PixelArtHand.png" alt="powerup" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">2500</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You A 2x Click Multiplier</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Click Boost</p>
+          <img src="PixelArtHand.png" alt="powerup" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">5000</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You A 1.5x Click Multiplier</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Click Boost</p>
+          <img src="PixelArtHand.png" alt="powerup" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">55000</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You A 1.5x Click Multiplier</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Click Boost</p>
+          <img src="PixelArtHand.png" alt="powerup" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">100000</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You A 2x Click Multiplier</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Click Boost</p>
+          <img src="PixelArtHand.png" alt="powerup" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">350000</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You A 1.5x Click Multiplier</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Click Boost</p>
+          <img src="PixelArtHand.png" alt="powerup" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">1000000</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives You A 2x Click Multiplier</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Cookies</p>
+          <img src="Cookieimg.png" alt="powerup" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">200</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives you 2x cookies for 60 seconds</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Cookies</p>
+          <img src="Cookieimg.png" alt="powerup" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">2000</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives you 3x cookies for 30 seconds</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Cookies</p>
+          <img src="Cookieimg.png" alt="powerup" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">50000</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives you 3x cookies for 30 seconds</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Cookies</p>
+          <img src="Cookieimg.png" alt="powerup" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">100000</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives you 3x cookies for 60 seconds</h3>
+        </div><div class="svelte-1h6xg3h hidden"><p class="svelte-1h6xg3h">Cookies</p>
+          <img src="Cookieimg.png" alt="powerup" class="powerupicon svelte-1h6xg3h">
+          <p class="svelte-1h6xg3h">250000</p>
+          <h3 class="showOnHover2 svelte-1h6xg3h">Gives you 2x cookies for 30 seconds</h3>
+        </div></div></div></div>
+
+<div class="choicetab svelte-1h6xg3h"><button class="button svelte-1h6xg3h">Upgrades</button>
+  <button class="button svelte-1h6xg3h">Upgrade-Enhancer</button>
+  <button class="button svelte-1h6xg3h">Powerups</button>
+  <img type="settings" class="settingspic svelte-1h6xg3h" src="Settings.png" alt="settings"></div>
+
+<div class="settingstab svelte-1h6xg3h hidden"><button class="button svelte-1h6xg3h">Save</button>
+  <button class="button svelte-1h6xg3h">Load</button>
+  <button class="button svelte-1h6xg3h">Reset</button>
+  <img type="backarrow" class="arrowpic svelte-1h6xg3h" src="Arrow.png" alt="back"></div>
+
+<div class="yesOrnoTab svelte-1h6xg3h hidden"><button class="button svelte-1h6xg3h">Yes</button>
+  <button class="button svelte-1h6xg3h">No</button></div>
+
+
+
+
+		<script type="module" data-sveltekit-hydrate="3repfw">
+			import { start } from "./_app/immutable/start-6fcc5e89.js";
+
+			start({
+				env: {},
+				hydrate: {
+					status: 200,
+					error: null,
+					node_ids: [0, 9],
+					params: {},
+					route: {"id":"/cookieclickerProj"},
+					data: [null,null],
+					form: null
+				},
+				paths: {"base":"","assets":""},
+				target: document.querySelector('[data-sveltekit-hydrate="3repfw"]').parentNode,
+				version: "1683205188434"
+			});
+		</script>
+	</div>
+	</body>
+</html>
