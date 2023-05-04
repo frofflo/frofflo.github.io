@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="../favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="content-security-policy" content="">
+		<link href="../_app/immutable/assets/_layout-c6c3fac1.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/_layout-8003c18b.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/FirstPost-88db00d7.css" rel="stylesheet">
+		<link rel="modulepreload" href="../_app/immutable/start-f0486cc0.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/index-1141e785.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/singletons-6eba404b.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/index-454e312b.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/preload-helper-b21cceae.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/control-ba37bfb4.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/parse-c28c2630.js">
+		<link rel="modulepreload" href="../_app/immutable/components/pages/_layout.svelte-202a0a02.js">
+		<link rel="modulepreload" href="../_app/immutable/modules/pages/_layout.js-aa24f8f4.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/_layout-d9d79ec1.js">
+		<link rel="modulepreload" href="../_app/immutable/components/pages/blog/_layout.svelte-17198ab8.js">
+		<link rel="modulepreload" href="../_app/immutable/components/pages/blog/_path_/_page.svelte-1121ee42.js">
+		<link rel="modulepreload" href="../_app/immutable/modules/pages/blog/_path_/_page.js-900bff51.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/_page-f1cfe70a.js"><!-- HEAD_svelte-gw0ru3_START --><!-- HEAD_svelte-gw0ru3_END -->
+	</head>
+	<body>
+		<div style="display: contents">
+
+
+<nav class="navClass svelte-11yo30u"><a class="linkClass svelte-11yo30u" href="/">Hem</a>
+  <a class="linkClass svelte-11yo30u" href="/cookieclicker">Cookieclicker</a>
+  <a class="linkClass svelte-11yo30u" href="/telltale">Telltale</a>
+  <a class="linkClass svelte-11yo30u" href="/todo">TodoApp</a>
+  <a class="linkClass svelte-11yo30u" href="/memory">Memory</a>
+  <a class="linkClass svelte-11yo30u" href="/elizabot">Elizabot</a>
+  <a class="linkClass svelte-11yo30u" href="/search">Search</a>
+  <a class="linkClass svelte-11yo30u" href="/blog">Blog</a>
+
+
+  <a class="linkClass svelte-11yo30u" target="_blank" href="https://github.com/frofflo/frofflo.github.io">GitHub</a></nav>
+
+<hr>
+
+
+
+<main class="container">
+
+
+<article><h1>Fixade Constructor till upgrades och bugfixes</h1>
+  <p>Published: 2023-04-05</p>
+  <p>Jag har fixat en constructor och lagt till några uppgraderingar samt upgrade enhancers:</p>
+<pre class="language-svelte"><!-- HTML_TAG_START --><code class="language-svelte">
+class multipleUpgrades&#123;
+    constructor(name, upgradeCost, costMultiplier, description, ammount, autoClickAddValue, picURL)<span class="token language-javascript"><span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">=</span>name
+        <span class="token keyword">this</span><span class="token punctuation">.</span>upgradeCost<span class="token operator">=</span>upgradeCost
+        <span class="token keyword">this</span><span class="token punctuation">.</span>costMultiplier<span class="token operator">=</span>costMultiplier
+        <span class="token keyword">this</span><span class="token punctuation">.</span>description<span class="token operator">=</span>description
+        <span class="token keyword">this</span><span class="token punctuation">.</span>ammount<span class="token operator">=</span>ammount
+        <span class="token keyword">this</span><span class="token punctuation">.</span>autoClickAddValue<span class="token operator">=</span>autoClickAddValue
+        <span class="token keyword">this</span><span class="token punctuation">.</span>picURL<span class="token operator">=</span>picURL
+    <span class="token punctuation">&#125;</span></span>
+    plus()<span class="token language-javascript"><span class="token punctuation">&#123;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>cookies <span class="token operator">>=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>upgradeCost<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        cookies<span class="token operator">-=</span><span class="token keyword">this</span><span class="token punctuation">.</span>upgradeCost
+        <span class="token keyword">this</span><span class="token punctuation">.</span>upgradeCost<span class="token operator">*=</span><span class="token keyword">this</span><span class="token punctuation">.</span>costMultiplier
+        <span class="token keyword">this</span><span class="token punctuation">.</span>ammount<span class="token operator">+=</span><span class="token number">1</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">==</span><span class="token string">"cursor"</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+          cursors <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>ammount<span class="token operator">*</span><span class="token keyword">this</span><span class="token punctuation">.</span>autoClickAddValue
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">==</span><span class="token string">"grandpa"</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+          grandpas <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>ammount<span class="token operator">*</span><span class="token keyword">this</span><span class="token punctuation">.</span>autoClickAddValue
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">==</span><span class="token string">"wheatfarm"</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+          wheatfarms <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>ammount<span class="token operator">*</span><span class="token keyword">this</span><span class="token punctuation">.</span>autoClickAddValue
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">==</span><span class="token string">"sugarcane -farm"</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+          sugarcanefarms <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>ammount<span class="token operator">*</span><span class="token keyword">this</span><span class="token punctuation">.</span>autoClickAddValue
+          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>sugarcanefarms<span class="token punctuation">)</span>
+          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>sugarcanefarmMultiplier<span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">==</span><span class="token string">"factory"</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+          factories <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>ammount<span class="token operator">*</span><span class="token keyword">this</span><span class="token punctuation">.</span>autoClickAddValue
+        <span class="token punctuation">&#125;</span>
+      <span class="token punctuation">&#125;</span>
+      upgradeList <span class="token operator">=</span> upgradeList<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span></span>
+    minus()<span class="token language-javascript"><span class="token punctuation">&#123;</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>ammount <span class="token operator">!=</span> <span class="token number">0</span> <span class="token operator">||</span> <span class="token keyword">this</span><span class="token punctuation">.</span>ammount <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>ammount <span class="token operator">-=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>upgradeCost <span class="token operator">/=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>costMultiplier<span class="token punctuation">;</span>
+        cookies <span class="token operator">+=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>upgradeCost<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">==</span><span class="token string">"cursor"</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+          cursors <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>ammount<span class="token operator">*</span><span class="token keyword">this</span><span class="token punctuation">.</span>autoClickAddValue
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">==</span><span class="token string">"grandpa"</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+          grandpas <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>ammount<span class="token operator">*</span><span class="token keyword">this</span><span class="token punctuation">.</span>autoClickAddValue
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">==</span><span class="token string">"wheatfarm"</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+          wheatfarms <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>ammount<span class="token operator">*</span><span class="token keyword">this</span><span class="token punctuation">.</span>autoClickAddValue
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">==</span><span class="token string">"sugarcanefarm"</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+          sugarcanefarms <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>ammount<span class="token operator">*</span><span class="token keyword">this</span><span class="token punctuation">.</span>autoClickAddValue
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">==</span><span class="token string">"factory"</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+          factories <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>ammount<span class="token operator">*</span><span class="token keyword">this</span><span class="token punctuation">.</span>autoClickAddValue
+        <span class="token punctuation">&#125;</span>
+      <span class="token punctuation">&#125;</span>
+      upgradeList <span class="token operator">=</span> upgradeList<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span></span>
+  &#125;
+
+  let upgrade1 = new multipleUpgrades("cursor", 50, 1.5, "Buy one Cursor to get 0.1 cookies / second", cursors, 0.1, "PixelArtHand.png")
+  let upgrade2 = new multipleUpgrades("grandpa", 500, 1.1, "Buy one Grandpa to get 1 cookies / second", grandpas, 1, "grandpa.png")
+  let upgrade3 = new multipleUpgrades("wheatfarm", 1500, 1.05, "Buy one Wheatfarm to get 10 cookies / second", wheatfarms, 10, "wheat.png")
+  let upgrade4 = new multipleUpgrades("sugarcane -farm", 10000, 1.075, "Buy one Sugarcane -farm to get 50 cookies / second", sugarcanefarms, 50, "sugarcane.png")
+  let upgrade5 = new multipleUpgrades("factory", 100000, 1.1, "Buy one Factory to get 200 cookies / second", factories, 200, "factory.png")
+
+  let upgradeEnhancer1 = new upgradeEnhancerIcon(false, 200, "Cursors", "Gives You 2x Cursor Profits", 2, false, "PixelArtHand.png")
+  let upgradeEnhancer2 = new upgradeEnhancerIcon(false, 500, "Cursors", "Gives You 1.5x Cursor Profits", 1.5, false, "PixelArtHand.png")
+  let upgradeEnhancer3 = new upgradeEnhancerIcon(false, 5000, "Cursors", "Gives You 2x Cursor Profits", 2, false, "PixelArtHand.png")
+  let upgradeEnhancer4 = new upgradeEnhancerIcon(false, 25000, "Cursors", "Gives You 1.5x Cursor Profits", 1.5, false, "PixelArtHand.png")
+  let upgradeEnhancer5 = new upgradeEnhancerIcon(false, 100000, "Cursors", "Gives You 2x Cursor Profits", 2, false, "PixelArtHand.png")
+  let upgradeEnhancer6 = new upgradeEnhancerIcon(false, 50000, "More Sugar", "Gives You 3x Sugarcane Profits", 3, false, "sugarcane.png")
+  let upgradeEnhancer7 = new upgradeEnhancerIcon(false, 250000, "More Sugar", "Gives You 2x Sugarcane Profits", 2, false, "sugarcane.png")
+  let upgradeEnhancer8 = new upgradeEnhancerIcon(false, 500000, "More Sugar", "Gives You 2x Sugarcane Profits", 2, false, "sugarcane.png")
+  let upgradeEnhancer9 = new upgradeEnhancerIcon(false, 1000000, "Cursors", "Gives You 5x Cursor Profits", 5, false, "PixelArtHand.png")
+  let upgradeEnhancer10 = new upgradeEnhancerIcon(false, 2500000, "More Sugar", "Gives You 5x Sugarcane Profits", 5, false, "sugarcane.png")
+
+  let upgradeList = [
+    upgrade1, upgrade2, upgrade3, upgrade4, upgrade5
+  ]
+
+  let upgradeEnhancerList = [
+    upgradeEnhancer1, upgradeEnhancer2, upgradeEnhancer3, upgradeEnhancer4, upgradeEnhancer5, upgradeEnhancer6, upgradeEnhancer7, upgradeEnhancer8, upgradeEnhancer9, upgradeEnhancer10
+  ]
+
+  localStorage.setItem('upgrades', JSON.stringify(upgradeList))
+
+  upgradeList = JSON.parse(localStorage.getItem('upgrades')??"[]").map((json)=>Object.assign(new multipleUpgrades(), json))
+
+</code><!-- HTML_TAG_END --></pre>
+<pre class="language-svelte"><!-- HTML_TAG_START --><code class="language-svelte">
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>upgradesFolder<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token each"><span class="token punctuation">&#123;</span><span class="token keyword">#each</span> <span class="token language-javascript">upgradeList </span><span class="token keyword">as</span> <span class="token language-javascript">upgrade<span class="token punctuation">&#125;</span></span></span>
+
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>upgradeTemplate<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>upgradeImageTemplate pixelArtHand<span class="token punctuation">"</span></span> <span class="token attr-name">src=</span><span class="token language-javascript"><span class="token punctuation">&#123;</span>upgrade<span class="token punctuation">.</span>picURL<span class="token punctuation">&#125;</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>pic<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>showOnHover upgradeDescription<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token language-javascript"><span class="token punctuation">&#123;</span>upgrade<span class="token punctuation">.</span>description<span class="token punctuation">&#125;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>upgradeImageTemplate<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h4</span><span class="token punctuation">></span></span><span class="token language-javascript"><span class="token punctuation">&#123;</span>upgrade<span class="token punctuation">.</span>ammount<span class="token punctuation">&#125;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h4</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>upgradeCostClass<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h5</span><span class="token punctuation">></span></span><span class="token language-javascript"><span class="token punctuation">&#123;</span>Math<span class="token punctuation">.</span><span class="token function">ceil</span><span class="token punctuation">(</span>upgrade<span class="token punctuation">.</span>upgradeCost<span class="token punctuation">)</span><span class="token punctuation">&#125;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h5</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>plusMinus<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+
+              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name"><span class="token namespace">on:</span>click=</span><span class="token language-javascript"><span class="token punctuation">&#123;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=></span><span class="token punctuation">&#123;</span>upgrade<span class="token punctuation">.</span><span class="token function">minus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span></span> <span class="token attr-name"><span class="token namespace">on:</span>keypress=</span><span class="token language-javascript"><span class="token punctuation">&#123;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=></span><span class="token punctuation">&#123;</span>upgrade<span class="token punctuation">.</span><span class="token function">minus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>plus<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>MinusSign.png<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Minus<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>showOnHover minusDescription<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Sell 1 <span class="token language-javascript"><span class="token punctuation">&#123;</span>upgrade<span class="token punctuation">.</span>name<span class="token punctuation">&#125;</span></span> for 50%<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span>
+
+              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name"><span class="token namespace">on:</span>click=</span><span class="token language-javascript"><span class="token punctuation">&#123;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=></span><span class="token punctuation">&#123;</span>upgrade<span class="token punctuation">.</span><span class="token function">plus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span></span> <span class="token attr-name"><span class="token namespace">on:</span>keypress=</span><span class="token language-javascript"><span class="token punctuation">&#123;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=></span><span class="token punctuation">&#123;</span>upgrade<span class="token punctuation">.</span><span class="token function">plus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>plus<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>PlusSign.png<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Plus<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>showOnHover plusDescription<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Purchase 1 <span class="token language-javascript"><span class="token punctuation">&#123;</span>upgrade<span class="token punctuation">.</span>name<span class="token punctuation">&#125;</span></span> for <span class="token language-javascript"><span class="token punctuation">&#123;</span>Math<span class="token punctuation">.</span><span class="token function">ceil</span><span class="token punctuation">(</span>upgrade<span class="token punctuation">.</span>upgradeCost<span class="token punctuation">)</span><span class="token punctuation">&#125;</span></span> cookies<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span>
+                
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+              
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+        <span class="token each"><span class="token punctuation">&#123;</span><span class="token keyword">/each</span><span class="token punctuation">&#125;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+</code><!-- HTML_TAG_END --></pre></article></main>
+
+
+		<script type="module" data-sveltekit-hydrate="lsitbi">
+			import { start } from "../_app/immutable/start-f0486cc0.js";
+
+			start({
+				env: {},
+				hydrate: {
+					status: 200,
+					error: null,
+					node_ids: [0, 2, 7],
+					params: {path:"CookieClickerupdate"},
+					route: {"id":"/blog/[path]"},
+					data: [null,null,null],
+					form: null
+				},
+				paths: {"base":"","assets":""},
+				target: document.querySelector('[data-sveltekit-hydrate="lsitbi"]').parentNode,
+				version: "1683205037068"
+			});
+		</script>
+	</div>
+	</body>
+</html>
