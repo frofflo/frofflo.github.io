@@ -17,6 +17,9 @@
   let time = 0;
   let cps = 0;
   let cookiesPerSecond = 0;
+  let cookieConst = 1;
+  let cookieConst1 = 1;
+  let cookieImgVar = "Cookieimg.png"
   var colors = [
     "#794e2e",
     "#ac8a5e",
@@ -30,6 +33,8 @@
   let randVar = 0;
   let needCookies = 0;
   let alertTabVar = false;
+  let resetBool = false;
+  let cantSellBool = false;
 
   let counterVar = 0;
   let timedMultiplier = 0.01;
@@ -310,6 +315,8 @@
 
   function Reset() {
     activeTab = "yesOrnoTab";
+    resetBool = false;
+    setTimeout(()=>{resetBool = true},1)    
   }
 
   function wipeData() {
@@ -429,17 +436,14 @@
         if (this.name == "factory") {
           factories = this.ammount * this.autoClickAddValue;
         }
-      }
-      if (cookies < this.upgradeCost) {
+      } else{
         needCookies = this.upgradeCost - cookies;
-        console.log(alertTabVar);
-        alertTabVar = true;
-        console.log(alertTabVar);
+        setTimeout(()=>{alertTabVar = true},1)
       }
       upgradeList = upgradeList;
     }
     minus() {
-      alertTabVar = false;
+      cantSellBool = false;
       if (this.ammount != 0 || this.ammount > 0) {
         this.ammount -= 1;
         this.upgradeCost /= this.costMultiplier;
@@ -466,6 +470,8 @@
         if (this.name == "factory") {
           factories = this.ammount * this.autoClickAddValue;
         }
+      } else{
+        setTimeout(()=>{cantSellBool = true},1)    
       }
       upgradeList = upgradeList;
     }
@@ -494,6 +500,7 @@
       this.duration = duration;
     }
     buy() {
+      alertTabVar = false;
       if (cookies >= this.cost) {
         this.isActive = false;
         this.isBoughtPowerup = true;
@@ -529,7 +536,8 @@
         }
       } else {
         needCookies = this.cost - cookies;
-        alertTabVar = true;
+        setTimeout(()=>{alertTabVar = true},1)
+
       }
     }
   }
@@ -553,6 +561,7 @@
       this.picURL = picURL;
     }
     buy() {
+      alertTabVar = false;
       if (cookies >= this.cost) {
         this.isActive = false;
         this.isBoughtUpgradeEnhancer = true;
@@ -588,7 +597,8 @@
         }
       } else {
         needCookies = this.cost - cookies;
-        alertTabVar = true;
+        setTimeout(()=>{alertTabVar = true},1)
+
       }
     }
   }
@@ -1181,31 +1191,49 @@
 </script>
 
 <div class="background">
+
   <div class="alertTab" class:alertTabSlide={alertTabVar}>
-    <h2>Hold Up!</h2>
-    <h4>You need {checkPrice(needCookies)} more cookies</h4>
+    <h2 class="alertText">Hold Up!</h2>
+    <h4 class="alertDesc">You need {checkPrice(needCookies)} more cookies</h4>
   </div>
 
-  <!-- <div class="alertTab">
-      <h2>Hold up!</h2>
-      <h4>Are you sure you want to reset?!</h4>
-    </div> -->
+  <div class="alertTab" class:alertTabSlide={resetBool}>
+    <h2 class="alertText">Hold up!</h2>
+    <h4 class="alertDesc">Are you sure you want to reset?!</h4>
+  </div>
+
+  <div class="alertTab" class:alertTabSlide={cantSellBool}>
+    <h2 class="alertText">Hold up!</h2>
+    <h4 class="alertDesc">You don't have anything to sell</h4>
+  </div>
 
   <div class="cookiebackground">
     <h1>Cookie Clicker</h1>
     <div class="cookieDisplayDiv">
-      <h2 class="cookieDisplay">Cookies:{checkPrice(Math.ceil(cookies))}</h2>
+      <h2 
+      on:mousedown={() => {
+        cookieConst = 3;
+        cookieConst1 = 1/3;
+      }}      
+      class="cookieDisplay">Cookies:{checkPrice(Math.ceil(cookies))}</h2>
     </div>
     <h6>Cookies/second:{Math.floor(cookiesPerSecond * 10) / 10}</h6>
     <h6>Clicks/second:{cps}</h6>
     <div class="cookieWrap">
+    
       <img
         class="cookieButtonClass"
         on:mousedown={() => {
-          cookieScale = 0.95;
+          cookieScale = 0.95 * cookieConst * cookieConst1;
         }}
         on:mouseup={() => {
-          cookieScale = 1;
+          cookieScale = 1.05 * cookieConst;
+        }}
+        on:mouseenter={() => {
+          cookieScale = 1.05 * cookieConst;
+        }}
+        on:mouseleave={() => {
+          cookieScale = 0.95;
         }}
         on:click={() => add()}
         on:keypress={() => add()}
@@ -1216,14 +1244,25 @@
         bind:this={picture}
         style="transform: scale({cookieScale})"
         class="cookiepictureclass"
-        src="Cookieimg.png"
+        src={cookieImgVar}
         alt="Cookie"
       />
+      <div class="cookiebg">
+        <div class="spinner">
+
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="upgradePanel" class:hidden={activeStoreTab != "upgradesTab"}>
-    <h1>Upgrades</h1>
+    <h1
+    on:mousedown={() => {
+      cookieConst = 1;
+      cookieConst1 = 0.000000001;
+      cookieImgVar = "Homer.gif"
+    }}      
+    >Upgrades</h1>
 
     <div class="upgradesFolder">
       {#each upgradeList as upgrade}
@@ -1395,6 +1434,7 @@
   .cookiebackground {
     text-align: center;
     border: 12px solid rgba(0, 0, 0, 0.4);
+    overflow:hidden;
   }
   .upgradePanel {
     overflow-x: hidden;
@@ -1435,7 +1475,7 @@
     max-height: 10vh;
   }
   .upgradeDescription {
-    transform: translate(3.75%, 30%);
+    transform: translate(4.5%, 30%);
     width: 10vh;
   }
   .pixelArtHand {
@@ -1646,17 +1686,40 @@
   .cookieWrap {
     height: 400px;
     width: 65vw;
+    position: relative;
+    display: flex;
+    place-items: center;
+    place-content: center;
+  }
+
+  .cookieWrap .cookiebg {
+    position: absolute;
+    left:0;
+    right: 0;
+    top: 0;
+    bottom:0;
+    z-index: -10;
+    pointer-events: none;
+    display: flex;
+    place-content: center;
+    place-items: center;
+  }
+
+  .spinner {
+    width: 200%;
+    aspect-ratio: 1;
+    position: absolute;
+    background: conic-gradient(transparent 25.5deg, rgba(255, 252, 95, 0.4) 27.5deg 37.5deg, transparent 39.5deg 40.5deg,rgba(255, 252, 95, 0.4) 42.5deg 52.5deg, transparent 54.5deg 78deg, rgba(255, 252, 95, 0.4) 80deg 90deg, transparent 92deg 93deg,rgba(255, 252, 95, 0.4) 95deg 105deg, transparent 107deg 130.5deg, rgba(255, 252, 95, 0.4) 132.5deg 142.5deg, transparent 144.5deg 145.5deg,rgba(255, 252, 95, 0.4) 147.5deg 157.5deg, transparent 159.5deg 178deg, rgba(255, 252, 95, 0.4) 180deg 190deg, transparent 192deg 193deg,rgba(255, 252, 95, 0.4) 195deg 205deg, transparent 207deg 230.5deg, rgba(255, 252, 95, 0.4) 232.5deg 242.5deg, transparent 244.5deg 245.5deg,rgba(255, 252, 95, 0.4) 247.5deg 257.5deg, transparent 259.5deg 283deg, rgba(255, 252, 95, 0.4) 285deg 295deg, transparent 297deg 298deg,rgba(255, 252, 95, 0.4) 300deg 310deg, transparent 312deg 333deg, rgba(255, 252, 95, 0.4) 335deg 345deg, transparent 347deg 348deg, rgba(255, 252, 95, 0.4) 349deg 358deg, transparent);
+    animation: rotate 15s infinite linear
   }
   .cookiepictureclass {
-    margin-top: 2.5vh;
     height: 80%;
     aspect-ratio: 1;
     border-radius: 100%;
     transition: 100ms;
   }
   .cookieButtonClass {
-    margin-top: 2.5vh;
-    height: 42.5%;
+    height: 82%;
     aspect-ratio: 1;
     border-radius: 100%;
     opacity: 0;
@@ -1719,33 +1782,61 @@
     pointer-events: none;
   }
   .alertTab {
-    width: 30vw;
-    height: 20vh;
-    background-color: rgba(50, 100, 50, 0.9);
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    background-color: rgba(50, 100, 50, 0.5);
     z-index: 100;
     position: absolute;
     margin-left: 50%;
-    transform: translate(-50%, -150%);
+    transform: translate(-50%, -200%);
     border-radius: 20px;
-    text-align: center;
+    border: solid rgb(30, 56, 30) 5px;
+    justify-content: center;
+    align-items: center;
     animation: none;
+    backdrop-filter: blur(15px);
+  }
+  .alertText {
+    border: solid rgb(30, 56, 30) 3px;
+    padding: 5px 5px 5px 10px;
+    border-radius: 5px;
+    width: fit-content;
+    transform: translateY(-125%);
+    background-color: rgba(50, 100, 50, 1);
+  }
+  .alertDesc {
+    color: white;
+    transform: translateY(-150%);
   }
   .alertTabSlide {
-    transform: translate(-50%, -150%);
-    animation: 2s alertTabSlide forwards;
+    transform: translate(-50%, -200%);
+    animation: 3s alertTabSlide forwards;
   }
   @keyframes alertTabSlide {
     0% {
-      transform: translate(-50%, -150%);
+      transform: translate(-50%, -200%);
     }
-    30% {
+    15% {
       transform: translate(-50%, 0%);
     }
-    80% {
+    85% {
       transform: translate(-50%, 0%);
     }
     100% {
-      transform: translate(-50%, -150%);
+      transform: translate(-50%, -200%);
     }
   }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg)
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
 </style>
