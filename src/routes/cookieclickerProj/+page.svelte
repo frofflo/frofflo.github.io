@@ -213,11 +213,11 @@
       localStorage.setItem("factories", factories);
 
       localStorage.setItem("cursorMultiplier", cursorMultiplier);
-      localStorage.setitem("grandpaMultiplier", grandpaMultiplier);
-      localStorage.setitem("wheatfarmMultiplier", wheatfarmMultiplier);
-      localStorage.setitem("sugarcanefarmMultiplier", sugarcanefarmMultiplier);
-      localStorage.setitem("cacaofarmMultiplier", cacaofarmMultiplier);
-      localStorage.setitem("milkyfarmMultiplier", milkyfarmMultiplier);
+      localStorage.setItem("grandpaMultiplier", grandpaMultiplier);
+      localStorage.setItem("wheatfarmMultiplier", wheatfarmMultiplier);
+      localStorage.setItem("sugarcanefarmMultiplier", sugarcanefarmMultiplier);
+      localStorage.setItem("cacaofarmMultiplier", cacaofarmMultiplier);
+      localStorage.setItem("milkyfarmMultiplier", milkyfarmMultiplier);
       localStorage.setItem("factoryMultiplier", factoryMultiplier);
     };
 
@@ -316,6 +316,8 @@
   function Reset() {
     activeTab = "yesOrnoTab";
     resetBool = false;
+    alertTabVar = false;
+    cantSellBool = false;
     setTimeout(()=>{resetBool = true},1)    
   }
 
@@ -410,6 +412,8 @@
     }
     plus() {
       alertTabVar = false;
+      cantSellBool = false;
+      resetBool = false;
       if (cookies >= this.upgradeCost) {
         cookies -= this.upgradeCost;
         this.upgradeCost *= this.costMultiplier;
@@ -444,6 +448,8 @@
     }
     minus() {
       cantSellBool = false;
+      alertTabVar = false;
+      resetBool = false;
       if (this.ammount != 0 || this.ammount > 0) {
         this.ammount -= 1;
         this.upgradeCost /= this.costMultiplier;
@@ -501,6 +507,8 @@
     }
     buy() {
       alertTabVar = false;
+      cantSellBool = false;
+      resetBool = false;
       if (cookies >= this.cost) {
         this.isActive = false;
         this.isBoughtPowerup = true;
@@ -562,6 +570,8 @@
     }
     buy() {
       alertTabVar = false;
+      cantSellBool = false;
+      resetBool = false;
       if (cookies >= this.cost) {
         this.isActive = false;
         this.isBoughtUpgradeEnhancer = true;
@@ -606,7 +616,7 @@
   // Upgrades
   let upgrade1 = new multipleUpgrades(
     "cursor",
-    50,
+    15,
     1.5,
     "Buy one Cursor to get 0.1 cookies / second",
     cursors,
