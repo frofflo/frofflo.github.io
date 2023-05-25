@@ -66,6 +66,7 @@
    */
   let picture;
   let cookieScale = 1;
+  let spinDuration = 5;
 
   function lerp(a, b, t) {
     return (b - a) * t + a;
@@ -270,7 +271,13 @@
     const maxParticleTime = 1;
     function DoFrame(milliTime) {
       window.requestAnimationFrame(DoFrame);
-      time = milliTime / 1000;
+      const localTime = milliTime / 1000
+      const deltaTime = localTime - time
+      time = localTime;
+
+
+      spinDuration += 20 * deltaTime
+      spinDuration += cps * 10 * deltaTime
 
       particles.forEach((particle, index) => {
         const elapsed = time - particle.time;
@@ -1197,7 +1204,10 @@
         cookies * 2 >= powerup.cost && !powerup.isBoughtPowerup;
       powerupList = powerupList;
     });
+
   }, 25);
+
+
 </script>
 
 <div class="background">
@@ -1258,7 +1268,7 @@
         alt="Cookie"
       />
       <div class="cookiebg">
-        <div class="spinner">
+        <div class="spinner" style="--spinDuration:{spinDuration}deg">
 
         </div>
       </div>
@@ -1270,7 +1280,11 @@
     on:mousedown={() => {
       cookieConst = 1;
       cookieConst1 = 0.000000001;
-      cookieImgVar = "Homer.gif"
+      cookieImgVar = "Ricky.gif"
+      setTimeout(function () {
+      cookieImgVar = "rock.gif"
+      }, 1000);
+
     }}      
     >Upgrades</h1>
 
@@ -1720,7 +1734,8 @@
     aspect-ratio: 1;
     position: absolute;
     background: conic-gradient(transparent 25.5deg, rgba(255, 252, 95, 0.4) 27.5deg 37.5deg, transparent 39.5deg 40.5deg,rgba(255, 252, 95, 0.4) 42.5deg 52.5deg, transparent 54.5deg 78deg, rgba(255, 252, 95, 0.4) 80deg 90deg, transparent 92deg 93deg,rgba(255, 252, 95, 0.4) 95deg 105deg, transparent 107deg 130.5deg, rgba(255, 252, 95, 0.4) 132.5deg 142.5deg, transparent 144.5deg 145.5deg,rgba(255, 252, 95, 0.4) 147.5deg 157.5deg, transparent 159.5deg 178deg, rgba(255, 252, 95, 0.4) 180deg 190deg, transparent 192deg 193deg,rgba(255, 252, 95, 0.4) 195deg 205deg, transparent 207deg 230.5deg, rgba(255, 252, 95, 0.4) 232.5deg 242.5deg, transparent 244.5deg 245.5deg,rgba(255, 252, 95, 0.4) 247.5deg 257.5deg, transparent 259.5deg 283deg, rgba(255, 252, 95, 0.4) 285deg 295deg, transparent 297deg 298deg,rgba(255, 252, 95, 0.4) 300deg 310deg, transparent 312deg 333deg, rgba(255, 252, 95, 0.4) 335deg 345deg, transparent 347deg 348deg, rgba(255, 252, 95, 0.4) 349deg 358deg, transparent);
-    animation: rotate 15s infinite linear
+    transform-origin: center;
+    transform: rotate(var(--spinDuration));
   }
   .cookiepictureclass {
     height: 80%;
