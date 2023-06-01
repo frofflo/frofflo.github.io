@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="../favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="content-security-policy" content="">
+		<link href="../_app/immutable/assets/_layout-c6c3fac1.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/_layout-8003c18b.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/FirstPost-88db00d7.css" rel="stylesheet">
+		<link rel="modulepreload" href="../_app/immutable/start-999de6db.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/index-1141e785.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/singletons-6eba404b.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/index-454e312b.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/preload-helper-b21cceae.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/control-ba37bfb4.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/parse-c28c2630.js">
+		<link rel="modulepreload" href="../_app/immutable/components/pages/_layout.svelte-6ecc9c67.js">
+		<link rel="modulepreload" href="../_app/immutable/modules/pages/_layout.js-860f444f.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/_layout-27569177.js">
+		<link rel="modulepreload" href="../_app/immutable/components/pages/blog/_layout.svelte-bf08441a.js">
+		<link rel="modulepreload" href="../_app/immutable/components/pages/blog/_path_/_page.svelte-1fc4a2fd.js">
+		<link rel="modulepreload" href="../_app/immutable/modules/pages/blog/_path_/_page.js-91c3546c.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/_page-4c6f0e20.js"><!-- HEAD_svelte-gw0ru3_START --><!-- HEAD_svelte-gw0ru3_END -->
+	</head>
+	<body>
+		<div style="display: contents">
+
+
+<nav class="navClass svelte-11yo30u"><a class="linkClass svelte-11yo30u" href="/">Hem</a>
+  <a class="linkClass svelte-11yo30u" href="/cookieclickerProj">Cookieclicker</a>
+  <a class="linkClass svelte-11yo30u" href="/telltale">Telltale</a>
+  <a class="linkClass svelte-11yo30u" href="/todo">TodoApp</a>
+  <a class="linkClass svelte-11yo30u" href="/memory">Memory</a>
+  <a class="linkClass svelte-11yo30u" href="/elizabot">Elizabot</a>
+  <a class="linkClass svelte-11yo30u" href="/search">Search</a>
+  <a class="linkClass svelte-11yo30u" href="/blog">Blog</a>
+
+
+  <a class="linkClass svelte-11yo30u" target="_blank" href="https://github.com/frofflo/frofflo.github.io">GitHub</a></nav>
+
+<hr>
+
+
+
+<main class="container">
+
+
+<article><h1>Lagt till solstrålar</h1>
+  <p>Published: 2023-06-01</p>
+  <p>Jag har lagt till solstrålar som ökar i hastighet då man klickar. Desto snabbare man klickar desto snabbare roterar strålarna runt kakan!</p>
+<pre class="language-js"><!-- HTML_TAG_START --><code class="language-js"><span class="token function">onMount</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+
+<span class="token keyword">function</span> <span class="token function">DoFrame</span><span class="token punctuation">(</span><span class="token parameter">milliTime</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    window<span class="token punctuation">.</span><span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>DoFrame<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> localTime <span class="token operator">=</span> milliTime <span class="token operator">/</span> <span class="token number">1000</span>
+    <span class="token keyword">const</span> deltaTime <span class="token operator">=</span> localTime <span class="token operator">-</span> time
+    time <span class="token operator">=</span> localTime<span class="token punctuation">;</span>
+    
+    <span class="token keyword">let</span> spinDuration <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+
+    spinDuration <span class="token operator">+=</span> <span class="token number">20</span> <span class="token operator">*</span> deltaTime
+    spinDuration <span class="token operator">+=</span> cps <span class="token operator">*</span> <span class="token number">10</span> <span class="token operator">*</span> deltaTime
+<span class="token punctuation">&#125;</span>
+
+window<span class="token punctuation">.</span><span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>DoFrame<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code><!-- HTML_TAG_END --></pre>
+<pre class="language-svelte"><!-- HTML_TAG_START --><code class="language-svelte"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>cookiebg<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>spinner<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">style="--spinDuration:</span></span><span class="token language-javascript"><span class="token punctuation">&#123;</span>spinDuration<span class="token punctuation">&#125;</span></span><span class="token attr-name">deg"</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code><!-- HTML_TAG_END --></pre>
+<pre class="language-css"><!-- HTML_TAG_START --><code class="language-css"><span class="token selector">.spinner</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 200%<span class="token punctuation">;</span>
+    <span class="token property">aspect-ratio</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+
+    <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">conic-gradient</span><span class="token punctuation">(</span>transparent 25.5deg<span class="token punctuation">,</span> <span class="token function">rgba</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span> 252<span class="token punctuation">,</span> 95<span class="token punctuation">,</span> 0.4<span class="token punctuation">)</span> 27.5deg 37.5deg<span class="token punctuation">,</span> 
+    transparent 39.5deg 40.5deg<span class="token punctuation">,</span><span class="token function">rgba</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span> 252<span class="token punctuation">,</span> 95<span class="token punctuation">,</span> 0.4<span class="token punctuation">)</span> 42.5deg 52.5deg<span class="token punctuation">,</span> transparent 54.5deg 78deg<span class="token punctuation">,</span> 
+    <span class="token function">rgba</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span> 252<span class="token punctuation">,</span> 95<span class="token punctuation">,</span> 0.4<span class="token punctuation">)</span> 80deg 90deg<span class="token punctuation">,</span> transparent 92deg 93deg<span class="token punctuation">,</span><span class="token function">rgba</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span> 252<span class="token punctuation">,</span> 95<span class="token punctuation">,</span> 0.4<span class="token punctuation">)</span> 95deg 105deg<span class="token punctuation">,</span> 
+    transparent 107deg 130.5deg<span class="token punctuation">,</span> <span class="token function">rgba</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span> 252<span class="token punctuation">,</span> 95<span class="token punctuation">,</span> 0.4<span class="token punctuation">)</span> 132.5deg 142.5deg<span class="token punctuation">,</span> transparent 144.5deg 145.5deg<span class="token punctuation">,</span>
+    <span class="token function">rgba</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span> 252<span class="token punctuation">,</span> 95<span class="token punctuation">,</span> 0.4<span class="token punctuation">)</span> 147.5deg 157.5deg<span class="token punctuation">,</span> transparent 159.5deg 178deg<span class="token punctuation">,</span> <span class="token function">rgba</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span> 252<span class="token punctuation">,</span> 95<span class="token punctuation">,</span> 0.4<span class="token punctuation">)</span> 180deg 190deg<span class="token punctuation">,</span> 
+    transparent 192deg 193deg<span class="token punctuation">,</span><span class="token function">rgba</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span> 252<span class="token punctuation">,</span> 95<span class="token punctuation">,</span> 0.4<span class="token punctuation">)</span> 195deg 205deg<span class="token punctuation">,</span> transparent 207deg 230.5deg<span class="token punctuation">,</span> 
+    <span class="token function">rgba</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span> 252<span class="token punctuation">,</span> 95<span class="token punctuation">,</span> 0.4<span class="token punctuation">)</span> 232.5deg 242.5deg<span class="token punctuation">,</span> transparent 244.5deg 245.5deg<span class="token punctuation">,</span><span class="token function">rgba</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span> 252<span class="token punctuation">,</span> 95<span class="token punctuation">,</span> 0.4<span class="token punctuation">)</span> 247.5deg 257.5deg<span class="token punctuation">,</span> 
+    transparent 259.5deg 283deg<span class="token punctuation">,</span> <span class="token function">rgba</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span> 252<span class="token punctuation">,</span> 95<span class="token punctuation">,</span> 0.4<span class="token punctuation">)</span> 285deg 295deg<span class="token punctuation">,</span> transparent 297deg 298deg<span class="token punctuation">,</span>
+    <span class="token function">rgba</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span> 252<span class="token punctuation">,</span> 95<span class="token punctuation">,</span> 0.4<span class="token punctuation">)</span> 300deg 310deg<span class="token punctuation">,</span> transparent 312deg 333deg<span class="token punctuation">,</span> <span class="token function">rgba</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span> 252<span class="token punctuation">,</span> 95<span class="token punctuation">,</span> 0.4<span class="token punctuation">)</span> 335deg 345deg<span class="token punctuation">,</span> 
+    transparent 347deg 348deg<span class="token punctuation">,</span> <span class="token function">rgba</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span> 252<span class="token punctuation">,</span> 95<span class="token punctuation">,</span> 0.4<span class="token punctuation">)</span> 349deg 358deg<span class="token punctuation">,</span> transparent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token property">transform-origin</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">rotate</span><span class="token punctuation">(</span><span class="token function">var</span><span class="token punctuation">(</span>--spinDuration<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
+<img src="/SolStrålar.png" alt="Sun"></article></main>
+
+
+		<script type="module" data-sveltekit-hydrate="u70mg2">
+			import { start } from "../_app/immutable/start-999de6db.js";
+
+			start({
+				env: {},
+				hydrate: {
+					status: 200,
+					error: null,
+					node_ids: [0, 2, 7],
+					params: {path:"Final Blog - Sun Rays"},
+					route: {"id":"/blog/[path]"},
+					data: [null,null,null],
+					form: null
+				},
+				paths: {"base":"","assets":""},
+				target: document.querySelector('[data-sveltekit-hydrate="u70mg2"]').parentNode,
+				version: "1685626385358"
+			});
+		</script>
+	</div>
+	</body>
+</html>

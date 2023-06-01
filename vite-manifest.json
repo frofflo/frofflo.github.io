@@ -1,6 +1,6 @@
 {
   "node_modules/@sveltejs/kit/src/runtime/client/start.js": {
-    "file": "_app/immutable/start-3bf94bf6.js",
+    "file": "_app/immutable/start-999de6db.js",
     "src": "node_modules/@sveltejs/kit/src/runtime/client/start.js",
     "isEntry": true,
     "imports": [
@@ -221,12 +221,12 @@
     ]
   },
   "src/routes/blog/[path]/+page.js": {
-    "file": "_app/immutable/modules/pages/blog/_path_/_page.js-b1561088.js",
+    "file": "_app/immutable/modules/pages/blog/_path_/_page.js-91c3546c.js",
     "src": "src/routes/blog/[path]/+page.js",
     "isEntry": true,
     "imports": [
       "_preload-helper-b21cceae.js",
-      "__page-b031259e.js"
+      "__page-4c6f0e20.js"
     ]
   },
   "src/routes/search/[category]/+page.js": {
@@ -274,13 +274,14 @@
   "__page-66335205.js": {
     "file": "_app/immutable/chunks/_page-66335205.js"
   },
-  "__page-b031259e.js": {
-    "file": "_app/immutable/chunks/_page-b031259e.js",
+  "__page-4c6f0e20.js": {
+    "file": "_app/immutable/chunks/_page-4c6f0e20.js",
     "imports": [
       "_preload-helper-b21cceae.js"
     ],
     "dynamicImports": [
       "src/lib/posts/CookieClickerupdate.svx",
+      "src/lib/posts/Final Blog - Sun Rays.svx",
       "src/lib/posts/FirstPost.svx"
     ]
   },
@@ -352,11 +353,11 @@
     ]
   },
   ".svelte-kit/generated/nodes/7.js": {
-    "file": "_app/immutable/chunks/7-2fefa074.js",
+    "file": "_app/immutable/chunks/7-1e26f19e.js",
     "src": ".svelte-kit/generated/nodes/7.js",
     "isDynamicEntry": true,
     "imports": [
-      "__page-b031259e.js",
+      "__page-4c6f0e20.js",
       "src/routes/blog/[path]/+page.svelte"
     ]
   },
@@ -441,6 +442,14 @@
       "_index-1141e785.js"
     ]
   },
+  "src/lib/posts/Final Blog - Sun Rays.svx": {
+    "file": "_app/immutable/chunks/Final Blog - Sun Rays-5344f328.js",
+    "src": "src/lib/posts/Final Blog - Sun Rays.svx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-1141e785.js"
+    ]
+  },
   "src/lib/posts/FirstPost.svx": {
     "file": "_app/immutable/chunks/FirstPost-ec892b45.js",
     "src": "src/lib/posts/FirstPost.svx",
@@ -456,6 +465,26 @@
     "file": "_app/immutable/assets/_layout-c6c3fac1.css",
     "src": "src/routes/+layout.css"
   },
+  "src/routes/blog/+layout.css": {
+    "file": "_app/immutable/assets/_layout-8003c18b.css",
+    "src": "src/routes/blog/+layout.css"
+  },
+  "src/routes/todo/+page.css": {
+    "file": "_app/immutable/assets/_page-666ed9bb.css",
+    "src": "src/routes/todo/+page.css"
+  },
+  "src/routes/test/+page.css": {
+    "file": "_app/immutable/assets/_page-e637dbec.css",
+    "src": "src/routes/test/+page.css"
+  },
+  "src/routes/memory/+page.css": {
+    "file": "_app/immutable/assets/_page-96fd4c8a.css",
+    "src": "src/routes/memory/+page.css"
+  },
+  "src/routes/telltale/+page.css": {
+    "file": "_app/immutable/assets/_page-4ab00059.css",
+    "src": "src/routes/telltale/+page.css"
+  },
   "src/routes/elizabot/+page.css": {
     "file": "_app/immutable/assets/_page-193965d5.css",
     "src": "src/routes/elizabot/+page.css"
@@ -468,32 +497,12 @@
     "file": "_app/immutable/assets/_page-8322518e.css",
     "src": "src/routes/cookieclickerProj/+page.css"
   },
-  "src/routes/todo/+page.css": {
-    "file": "_app/immutable/assets/_page-666ed9bb.css",
-    "src": "src/routes/todo/+page.css"
-  },
-  "src/lib/posts/FirstPost.css": {
-    "file": "_app/immutable/assets/FirstPost-88db00d7.css",
-    "src": "src/lib/posts/FirstPost.css"
-  },
-  "src/routes/test/+page.css": {
-    "file": "_app/immutable/assets/_page-e637dbec.css",
-    "src": "src/routes/test/+page.css"
-  },
-  "src/routes/blog/+layout.css": {
-    "file": "_app/immutable/assets/_layout-8003c18b.css",
-    "src": "src/routes/blog/+layout.css"
-  },
-  "src/routes/telltale/+page.css": {
-    "file": "_app/immutable/assets/_page-4ab00059.css",
-    "src": "src/routes/telltale/+page.css"
-  },
   "pico.css": {
     "file": "_app/immutable/assets/pico-cb0259b3.css",
     "src": "pico.css"
   },
-  "src/routes/memory/+page.css": {
-    "file": "_app/immutable/assets/_page-96fd4c8a.css",
-    "src": "src/routes/memory/+page.css"
+  "src/lib/posts/FirstPost.css": {
+    "file": "_app/immutable/assets/FirstPost-88db00d7.css",
+    "src": "src/lib/posts/FirstPost.css"
   }
 }
