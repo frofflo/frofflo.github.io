@@ -1,6 +1,6 @@
 <nav class="navClass">
   <a class="linkClass" href="/">Hem</a>
-  <a class="linkClass" href="/cookieclicker">Cookieclicker</a>
+  <a class="linkClass" href="/cookieclickerProj">Cookieclicker</a>
   <a class="linkClass" href="/telltale">Telltale</a>
   <a class="linkClass" href="/todo">TodoApp</a>
   <a class="linkClass" href="/memory">Memory</a>
